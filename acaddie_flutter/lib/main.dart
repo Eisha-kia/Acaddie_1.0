@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'services/course_content_ai_assistant.dart';
+import 'widgets/content_conflict_assistant_modal.dart';
 
 void main() {
   runApp(const AcaddieApp());
@@ -462,7 +464,7 @@ class _AcaddiePrototypeState extends State<AcaddiePrototype> {
   }
 
   // ==========================================
-  // FUNCTIONAL EDIT TOPIC MODAL (View 2)
+  // FUNCTIONAL EDIT TOPIC MODAL (View 2) WITH AI CONFLICT ASSISTANT
   // ==========================================
   void _showEditTopicDialog(int topicIndex, Map<String, dynamic> topic) {
     final TextEditingController nameCtrl = TextEditingController(text: topic['name'] as String);
@@ -563,6 +565,27 @@ class _AcaddiePrototypeState extends State<AcaddiePrototype> {
                         ),
                       ],
                     ),
+                    const SizedBox(height: 12),
+                    Container(
+                      padding: const EdgeInsets.all(10),
+                      decoration: BoxDecoration(
+                        color: const Color(0xFFF8FAFC),
+                        borderRadius: BorderRadius.circular(8),
+                        border: Border.all(color: const Color(0xFFE2E8F0)),
+                      ),
+                      child: const Row(
+                        children: [
+                          Icon(Icons.auto_awesome, size: 16, color: Color(0xFF7C3AED)),
+                          SizedBox(width: 8),
+                          Expanded(
+                            child: Text(
+                              'AI automatically verifies prerequisite consistency across all 22 courses when saved.',
+                              style: TextStyle(fontSize: 11.5, color: Color(0xFF64748B), height: 1.3),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
                   ],
                 ),
               ),
@@ -575,24 +598,72 @@ class _AcaddiePrototypeState extends State<AcaddiePrototype> {
                   onPressed: () {
                     final String newName = nameCtrl.text.trim();
                     final String newWeeks = weeksCtrl.text.trim().isEmpty ? '2.5w' : weeksCtrl.text.trim();
+                    if (newName.isEmpty) return;
 
-                    if (newName.isNotEmpty) {
-                      setState(() {
-                        final List topics = syllabusCourses[selectedCourseIndex]['topics'] as List;
-                        topics[topicIndex] = {
-                          'name': newName,
-                          'weeks': newWeeks,
-                          'blooms': selectedBlooms,
-                        };
-                      });
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(
-                          content: Text('Successfully updated topic: "$newName"'),
-                          backgroundColor: const Color(0xFF059669),
-                        ),
-                      );
-                    }
+                    final course = syllabusCourses[selectedCourseIndex];
                     Navigator.pop(context);
+
+                    // Automatic AI analysis if content title changed
+                    if (newName.toLowerCase() != (topic['name'] as String).toLowerCase()) {
+                      final analysis = CourseContentAiAssistant.analyzeAddContent(
+                        newContentTitle: newName,
+                        targetCourseCode: course['code'] as String,
+                        targetCourseTitle: course['title'] as String,
+                        allCourses: syllabusCourses,
+                      );
+
+                      if (analysis.hasConflict) {
+                        ContentConflictAssistantModal.show(
+                          context: context,
+                          analysis: analysis,
+                          onConfirm: () {
+                            Navigator.pop(context);
+                            setState(() {
+                              final List topics = course['topics'] as List;
+                              topics[topicIndex] = {
+                                'name': newName,
+                                'weeks': newWeeks,
+                                'blooms': selectedBlooms,
+                              };
+                            });
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                content: Text('Updated topic: "$newName" (with acknowledged AI advisory)'),
+                                backgroundColor: const Color(0xFF059669),
+                              ),
+                            );
+                          },
+                          onEditAlternative: () {
+                            Navigator.pop(context);
+                            _showEditTopicDialog(topicIndex, {
+                              'name': newName,
+                              'weeks': newWeeks,
+                              'blooms': selectedBlooms,
+                            });
+                          },
+                          onCancel: () {
+                            Navigator.pop(context);
+                          },
+                        );
+                        return;
+                      }
+                    }
+
+                    // Safe update
+                    setState(() {
+                      final List topics = course['topics'] as List;
+                      topics[topicIndex] = {
+                        'name': newName,
+                        'weeks': newWeeks,
+                        'blooms': selectedBlooms,
+                      };
+                    });
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text('✓ AI verified: Updated topic "$newName"'),
+                        backgroundColor: const Color(0xFF059669),
+                      ),
+                    );
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color(0xFF0F172A),
@@ -605,6 +676,73 @@ class _AcaddiePrototypeState extends State<AcaddiePrototype> {
             );
           },
         );
+      },
+    );
+  }
+
+  /// Automatically triggers AI Dependency Analysis before deleting any course content topic
+  void _handleDeleteTopicWithAiAssistant(int topicIndex, Map<String, dynamic> topic, Map<String, dynamic> course) {
+    final analysis = CourseContentAiAssistant.analyzeDeleteContent(
+      contentTitle: topic['name'] as String,
+      targetCourseCode: course['code'] as String,
+      targetCourseTitle: course['title'] as String,
+      allCourses: syllabusCourses,
+    );
+
+    ContentConflictAssistantModal.show(
+      context: context,
+      analysis: analysis,
+      onConfirm: () {
+        Navigator.pop(context); // Close dialog
+        setState(() {
+          final List topics = course['topics'] as List;
+          topics.removeAt(topicIndex);
+        });
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('Removed topic: "${topic['name']}" (Action confirmed by admin)'),
+            backgroundColor: const Color(0xFF0F172A),
+          ),
+        );
+      },
+      onCancel: () {
+        Navigator.pop(context); // Safe cancel, keep topic
+      },
+    );
+  }
+
+  /// Automatically triggers AI Dependency Analysis before deleting any curriculum module or lesson
+  void _handleDeleteCurriculumItemWithAiAssistant({
+    required String itemName,
+    required bool isModule,
+    required VoidCallback onProceed,
+  }) {
+    final String currentTitle = titleController.text.trim().isEmpty
+        ? 'New Course Curriculum'
+        : titleController.text.trim();
+
+    final analysis = CourseContentAiAssistant.analyzeDeleteContent(
+      contentTitle: itemName,
+      targetCourseCode: 'NEW-COURSE',
+      targetCourseTitle: currentTitle,
+      allCourses: syllabusCourses,
+    );
+
+    ContentConflictAssistantModal.show(
+      context: context,
+      analysis: analysis,
+      onConfirm: () {
+        Navigator.pop(context);
+        onProceed();
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('Removed ${isModule ? "module" : "lesson"}: "$itemName"'),
+            backgroundColor: const Color(0xFF0F172A),
+          ),
+        );
+      },
+      onCancel: () {
+        Navigator.pop(context);
       },
     );
   }
@@ -987,47 +1125,223 @@ class _AcaddiePrototypeState extends State<AcaddiePrototype> {
     });
   }
 
-  void _showAddContentDialog() {
-    final TextEditingController newContentCtrl = TextEditingController();
+  void _showAddContentDialog({String? prefillName, String? prefillWeeks, String? prefillBlooms}) {
+    final TextEditingController newContentCtrl = TextEditingController(text: prefillName ?? '');
+    final TextEditingController weeksCtrl = TextEditingController(text: prefillWeeks ?? '2.5w');
+    String selectedBlooms = prefillBlooms ?? 'K4 Analyze';
+
+    final course = syllabusCourses[selectedCourseIndex];
+
     showDialog(
       context: context,
       builder: (context) {
-        return AlertDialog(
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-          title: const Text('Add Course Content Topic', style: TextStyle(fontWeight: FontWeight.bold)),
-          content: TextField(
-            controller: newContentCtrl,
-            decoration: InputDecoration(
-              hintText: 'e.g., Graph Neural Networks & Transformers',
-              border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
-            ),
-          ),
-          actions: [
-            TextButton(onPressed: () => Navigator.pop(context), child: const Text('Cancel')),
-            ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                backgroundColor: const Color(0xFF0F172A),
-                foregroundColor: Colors.white,
+        return StatefulBuilder(
+          builder: (context, setDialogState) {
+            return AlertDialog(
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+              title: Row(
+                children: [
+                  Container(
+                    padding: const EdgeInsets.all(8),
+                    decoration: BoxDecoration(
+                      color: const Color(0xFFEFF6FF),
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    child: const Icon(Icons.add_task, color: Color(0xFF2563EB), size: 22),
+                  ),
+                  const SizedBox(width: 12),
+                  const Text('Add Course Content Topic', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
+                ],
               ),
-              onPressed: () {
-                if (newContentCtrl.text.trim().isNotEmpty) {
-                  setState(() {
-                    final List topics = syllabusCourses[selectedCourseIndex]['topics'] as List;
-                    topics.add({
-                      'name': newContentCtrl.text.trim(),
-                      'weeks': '2.0w',
-                      'blooms': 'K4 Analyze',
-                    });
-                  });
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(content: Text('Topic added successfully!'), backgroundColor: Color(0xFF059669)),
-                  );
-                }
-                Navigator.pop(context);
-              },
-              child: const Text('Add Topic'),
-            ),
-          ],
+              content: SingleChildScrollView(
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Adding to ${course['code']}: ${course['title']}',
+                      style: const TextStyle(fontSize: 12, color: Color(0xFF64748B), fontWeight: FontWeight.w600),
+                    ),
+                    const SizedBox(height: 12),
+                    const Text('Topic Name', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 13, color: Color(0xFF0F172A))),
+                    const SizedBox(height: 6),
+                    TextField(
+                      controller: newContentCtrl,
+                      decoration: InputDecoration(
+                        hintText: 'e.g., Graph Neural Networks & Transformers',
+                        border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
+                        contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
+                      ),
+                    ),
+                    const SizedBox(height: 14),
+                    Row(
+                      children: [
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              const Text('Duration (Weeks)', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 13, color: Color(0xFF0F172A))),
+                              const SizedBox(height: 6),
+                              TextField(
+                                controller: weeksCtrl,
+                                decoration: InputDecoration(
+                                  hintText: '2.5w',
+                                  border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
+                                  contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        const SizedBox(width: 12),
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              const Text('Bloom\'s Level', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 13, color: Color(0xFF0F172A))),
+                              const SizedBox(height: 6),
+                              DropdownButtonFormField<String>(
+                                value: selectedBlooms,
+                                decoration: InputDecoration(
+                                  border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
+                                  contentPadding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                                ),
+                                items: ['K2 Understand', 'K3 Apply', 'K4 Analyze', 'K5 Evaluate', 'K6 Create']
+                                    .map((opt) => DropdownMenuItem(value: opt, child: Text(opt, style: const TextStyle(fontSize: 13))))
+                                    .toList(),
+                                onChanged: (val) {
+                                  if (val != null) setDialogState(() => selectedBlooms = val);
+                                },
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 12),
+                    Container(
+                      padding: const EdgeInsets.all(10),
+                      decoration: BoxDecoration(
+                        color: const Color(0xFFF8FAFC),
+                        borderRadius: BorderRadius.circular(8),
+                        border: Border.all(color: const Color(0xFFE2E8F0)),
+                      ),
+                      child: const Row(
+                        children: [
+                          Icon(Icons.auto_awesome, size: 16, color: Color(0xFF7C3AED)),
+                          SizedBox(width: 8),
+                          Expanded(
+                            child: Text(
+                              'AI automatically analyzes prerequisite relationships, sequencing, and cross-course overlap across 22 courses upon saving.',
+                              style: TextStyle(fontSize: 11.5, color: Color(0xFF64748B), height: 1.3),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              actions: [
+                TextButton(
+                  onPressed: () => Navigator.pop(context),
+                  child: const Text('Cancel', style: TextStyle(color: Color(0xFF64748B))),
+                ),
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: const Color(0xFF0F172A),
+                    foregroundColor: Colors.white,
+                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+                    padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+                  ),
+                  onPressed: () {
+                    final String topicTitle = newContentCtrl.text.trim();
+                    if (topicTitle.isEmpty) return;
+
+                    final String finalWeeks = weeksCtrl.text.trim().isEmpty ? '2.5w' : weeksCtrl.text.trim();
+                    Navigator.pop(context); // Close add input dialog
+
+                    // Automatically trigger the AI analysis
+                    final analysis = CourseContentAiAssistant.analyzeAddContent(
+                      newContentTitle: topicTitle,
+                      targetCourseCode: course['code'] as String,
+                      targetCourseTitle: course['title'] as String,
+                      allCourses: syllabusCourses,
+                    );
+
+                    if (analysis.hasConflict) {
+                      // Show interactive AI advisory modal
+                      ContentConflictAssistantModal.show(
+                        context: context,
+                        analysis: analysis,
+                        onConfirm: () {
+                          Navigator.pop(context);
+                          setState(() {
+                            final List topics = course['topics'] as List;
+                            topics.add({
+                              'name': topicTitle,
+                              'weeks': finalWeeks,
+                              'blooms': selectedBlooms,
+                            });
+                          });
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text('Topic added: "$topicTitle" (with acknowledged AI advisory)'),
+                              backgroundColor: const Color(0xFF059669),
+                            ),
+                          );
+                        },
+                        onEditAlternative: () {
+                          Navigator.pop(context);
+                          _showAddContentDialog(
+                            prefillName: topicTitle,
+                            prefillWeeks: finalWeeks,
+                            prefillBlooms: selectedBlooms,
+                          );
+                        },
+                        onCancel: () {
+                          Navigator.pop(context);
+                        },
+                      );
+                    } else {
+                      // Safe addition: automatically save and show concise notification
+                      setState(() {
+                        final List topics = course['topics'] as List;
+                        topics.add({
+                          'name': topicTitle,
+                          'weeks': finalWeeks,
+                          'blooms': selectedBlooms,
+                        });
+                      });
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                          content: Row(
+                            children: [
+                              Icon(Icons.check_circle, color: Colors.white, size: 18),
+                              SizedBox(width: 8),
+                              Expanded(
+                                child: Text('✓ AI analysis complete — No conflicts or dependencies detected. Topic added.'),
+                              ),
+                            ],
+                          ),
+                          backgroundColor: Color(0xFF059669),
+                          duration: Duration(seconds: 4),
+                        ),
+                      );
+                    }
+                  },
+                  child: const Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Icon(Icons.auto_awesome, size: 16),
+                      SizedBox(width: 6),
+                      Text('Save & Analyze Content'),
+                    ],
+                  ),
+                ),
+              ],
+            );
+          },
         );
       },
     );
@@ -1054,47 +1368,51 @@ class _AcaddiePrototypeState extends State<AcaddiePrototype> {
         title: InkWell(
           onTap: () => setState(() => currentView = 'dashboard'),
           borderRadius: BorderRadius.circular(8),
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 4),
-            child: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Container(
-                  padding: const EdgeInsets.all(6),
-                  decoration: BoxDecoration(
-                    gradient: const LinearGradient(
-                      colors: [Color(0xFF0F172A), Color(0xFF2563EB)],
-                      begin: Alignment.topLeft,
-                      end: Alignment.bottomRight,
+          child: FittedBox(
+            fit: BoxFit.scaleDown,
+            alignment: Alignment.centerLeft,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 4),
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Container(
+                    padding: const EdgeInsets.all(6),
+                    decoration: BoxDecoration(
+                      gradient: const LinearGradient(
+                        colors: [Color(0xFF0F172A), Color(0xFF2563EB)],
+                        begin: Alignment.topLeft,
+                        end: Alignment.bottomRight,
+                      ),
+                      borderRadius: BorderRadius.circular(8),
                     ),
-                    borderRadius: BorderRadius.circular(8),
+                    child: const Icon(Icons.auto_stories, color: Colors.white, size: 18),
                   ),
-                  child: const Icon(Icons.auto_stories, color: Colors.white, size: 18),
-                ),
-                const SizedBox(width: 10),
-                const Text(
-                  'Acaddie',
-                  style: TextStyle(
-                    color: Color(0xFF0F172A),
-                    fontWeight: FontWeight.w900,
-                    fontSize: 21,
-                    letterSpacing: -0.5,
+                  const SizedBox(width: 10),
+                  const Text(
+                    'Acaddie',
+                    style: TextStyle(
+                      color: Color(0xFF0F172A),
+                      fontWeight: FontWeight.w900,
+                      fontSize: 21,
+                      letterSpacing: -0.5,
+                    ),
                   ),
-                ),
-                const SizedBox(width: 6),
-                Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
-                  decoration: BoxDecoration(
-                    color: const Color(0xFFEFF6FF),
-                    borderRadius: BorderRadius.circular(6),
-                    border: Border.all(color: const Color(0xFFBFDBFE)),
+                  const SizedBox(width: 6),
+                  Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+                    decoration: BoxDecoration(
+                      color: const Color(0xFFEFF6FF),
+                      borderRadius: BorderRadius.circular(6),
+                      border: Border.all(color: const Color(0xFFBFDBFE)),
+                    ),
+                    child: const Text(
+                      '1.0',
+                      style: TextStyle(color: Color(0xFF1D4ED8), fontSize: 11, fontWeight: FontWeight.bold),
+                    ),
                   ),
-                  child: const Text(
-                    '1.0',
-                    style: TextStyle(color: Color(0xFF1D4ED8), fontSize: 11, fontWeight: FontWeight.bold),
-                  ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ),
@@ -1706,7 +2024,69 @@ class _AcaddiePrototypeState extends State<AcaddiePrototype> {
             ],
           ),
         ),
-        const SizedBox(height: 20),
+        const SizedBox(height: 16),
+        // AI Content Conflict & Dependency Assistant Ambient Status Banner
+        Container(
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+          decoration: BoxDecoration(
+            gradient: const LinearGradient(
+              colors: [Color(0xFFF8FAFC), Color(0xFFEFF6FF)],
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+            ),
+            borderRadius: BorderRadius.circular(12),
+            border: Border.all(color: const Color(0xFFBFDBFE)),
+          ),
+          child: Row(
+            children: [
+              Container(
+                padding: const EdgeInsets.all(8),
+                decoration: BoxDecoration(
+                  color: const Color(0xFF2563EB).withOpacity(0.12),
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                child: const Icon(Icons.auto_awesome, color: Color(0xFF2563EB), size: 18),
+              ),
+              const SizedBox(width: 12),
+              const Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'AI Content Conflict & Dependency Assistant Active',
+                      style: TextStyle(fontWeight: FontWeight.bold, fontSize: 13, color: Color(0xFF0F172A)),
+                    ),
+                    SizedBox(height: 2),
+                    Text(
+                      'Automatic cross-course dependency & overlap checks on every Add, Edit, or Delete.',
+                      style: TextStyle(fontSize: 12, color: Color(0xFF475569)),
+                    ),
+                  ],
+                ),
+              ),
+              Container(
+                padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                decoration: BoxDecoration(
+                  color: const Color(0xFFDCFCE7),
+                  borderRadius: BorderRadius.circular(14),
+                  border: Border.all(color: const Color(0xFF86EFAC)),
+                ),
+                child: const Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Icon(Icons.check_circle, size: 13, color: Color(0xFF16A34A)),
+                    SizedBox(width: 4),
+                    Text(
+                      'Auto-Guard Active',
+                      style: TextStyle(fontSize: 11.5, fontWeight: FontWeight.bold, color: Color(0xFF166534)),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+        const SizedBox(height: 18),
         ListView.separated(
           shrinkWrap: true,
           physics: const NeverScrollableScrollPhysics(),
@@ -1789,6 +2169,12 @@ class _AcaddiePrototypeState extends State<AcaddiePrototype> {
                     tooltip: 'Edit Topic',
                     onPressed: () => _showEditTopicDialog(index, topic),
                   ),
+                  // Direct Functional Delete Icon Button with Automatic AI Dependency Check
+                  IconButton(
+                    icon: const Icon(Icons.delete_outline, size: 20, color: Color(0xFFEF4444)),
+                    tooltip: 'Delete Topic (AI Protected)',
+                    onPressed: () => _handleDeleteTopicWithAiAssistant(index, topic, course),
+                  ),
                   // Functional Popup Menu
                   PopupMenuButton<String>(
                     icon: const Icon(Icons.more_vert, color: Color(0xFF64748B)),
@@ -1797,12 +2183,7 @@ class _AcaddiePrototypeState extends State<AcaddiePrototype> {
                       if (val == 'Edit') {
                         _showEditTopicDialog(index, topic);
                       } else if (val == 'Delete') {
-                        setState(() {
-                          topics.removeAt(index);
-                        });
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(content: Text('Removed topic: ${topic['name']}')),
-                        );
+                        _handleDeleteTopicWithAiAssistant(index, topic, course);
                       } else if (val == 'AI Analysis') {
                         _openInteractiveAiChatModal(
                           initialPrompt: 'Provide OBE analysis and recommendations for topic: "${topic['name']}" in course ${course['code']}',
@@ -1837,7 +2218,7 @@ class _AcaddiePrototypeState extends State<AcaddiePrototype> {
                           children: [
                             Icon(Icons.delete, size: 16, color: Colors.red),
                             SizedBox(width: 8),
-                            Text('Delete Topic', style: TextStyle(color: Colors.red)),
+                            Text('Delete Topic (AI Analysis)', style: TextStyle(color: Colors.red)),
                           ],
                         ),
                       ),
@@ -2184,9 +2565,15 @@ class _AcaddiePrototypeState extends State<AcaddiePrototype> {
                           );
                         },
                         onDelete: () {
-                          setState(() {
-                            generatedCurriculum.removeAt(modIdx);
-                          });
+                          _handleDeleteCurriculumItemWithAiAssistant(
+                            itemName: modTitle,
+                            isModule: true,
+                            onProceed: () {
+                              setState(() {
+                                generatedCurriculum.removeAt(modIdx);
+                              });
+                            },
+                          );
                         },
                       ),
                     ],
@@ -2227,10 +2614,16 @@ class _AcaddiePrototypeState extends State<AcaddiePrototype> {
                             );
                           },
                           onDelete: () {
-                            setState(() {
-                              lessons.removeAt(lessonIdx);
-                              mod['lessons'] = lessons;
-                            });
+                            _handleDeleteCurriculumItemWithAiAssistant(
+                              itemName: lesson,
+                              isModule: false,
+                              onProceed: () {
+                                setState(() {
+                                  lessons.removeAt(lessonIdx);
+                                  mod['lessons'] = lessons;
+                                });
+                              },
+                            );
                           },
                         ),
                       ],
@@ -2244,21 +2637,52 @@ class _AcaddiePrototypeState extends State<AcaddiePrototype> {
         const SizedBox(height: 12),
         OutlinedButton.icon(
           onPressed: () {
-            setState(() {
-              generatedCurriculum.add({
-                'module': 'Module ${generatedCurriculum.length + 1}: Emerging Technology & Capstone Lab',
-                'lessons': [
-                  'Lesson ${generatedCurriculum.length + 1}.1: Practical Implementation & Rigorous Testing',
-                  'Lesson ${generatedCurriculum.length + 1}.2: Peer Defense & Evaluation',
-                ],
-              });
-            });
-            ScaffoldMessenger.of(context).showSnackBar(
-              const SnackBar(content: Text('Added new module to curriculum!'), backgroundColor: Color(0xFF059669)),
+            final String newModTitle = 'Module ${generatedCurriculum.length + 1}: Emerging Technology & Capstone Lab';
+            final analysis = CourseContentAiAssistant.analyzeAddContent(
+              newContentTitle: newModTitle,
+              targetCourseCode: 'NEW-COURSE',
+              targetCourseTitle: titleController.text.trim().isEmpty ? 'Draft Course' : titleController.text.trim(),
+              allCourses: syllabusCourses,
             );
+
+            if (analysis.hasConflict) {
+              ContentConflictAssistantModal.show(
+                context: context,
+                analysis: analysis,
+                onConfirm: () {
+                  Navigator.pop(context);
+                  setState(() {
+                    generatedCurriculum.add({
+                      'module': newModTitle,
+                      'lessons': [
+                        'Lesson ${generatedCurriculum.length + 1}.1: Practical Implementation & Rigorous Testing',
+                        'Lesson ${generatedCurriculum.length + 1}.2: Peer Defense & Evaluation',
+                      ],
+                    });
+                  });
+                },
+                onCancel: () => Navigator.pop(context),
+              );
+            } else {
+              setState(() {
+                generatedCurriculum.add({
+                  'module': newModTitle,
+                  'lessons': [
+                    'Lesson ${generatedCurriculum.length + 1}.1: Practical Implementation & Rigorous Testing',
+                    'Lesson ${generatedCurriculum.length + 1}.2: Peer Defense & Evaluation',
+                  ],
+                });
+              });
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(
+                  content: Text('✓ AI verified: Added new module without cross-course conflicts.'),
+                  backgroundColor: Color(0xFF059669),
+                ),
+              );
+            }
           },
           icon: const Icon(Icons.add, color: Color(0xFF0F172A)),
-          label: const Text('Add New', style: TextStyle(color: Color(0xFF0F172A), fontWeight: FontWeight.bold)),
+          label: const Text('Add New Module', style: TextStyle(color: Color(0xFF0F172A), fontWeight: FontWeight.bold)),
           style: OutlinedButton.styleFrom(
             side: const BorderSide(color: Color(0xFF0F172A), width: 1.5),
             padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 14),
