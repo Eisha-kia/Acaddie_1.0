@@ -15,8 +15,11 @@ class AcaddieLogo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisSize: MainAxisSize.min,
+    return FittedBox(
+      fit: BoxFit.scaleDown,
+      alignment: Alignment.centerLeft,
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
       children: [
         // Emblem Icon
         Container(
@@ -110,6 +113,7 @@ class AcaddieLogo extends StatelessWidget {
           ),
         ],
       ],
+    ),
     );
   }
 }

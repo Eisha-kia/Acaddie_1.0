@@ -750,7 +750,7 @@ class _TopBar extends StatelessWidget {
           if (simulation != null) ...[
             AnimatedBuilder(
               animation: pulseCtrl,
-              builder: (_, __) => Container(
+              builder: (context, child) => Container(
                 padding:
                     const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
                 decoration: BoxDecoration(
@@ -1053,7 +1053,7 @@ class _DashboardView extends StatelessWidget {
               onTap: () => onNavigate(AcaddieTab.report),
               child: AnimatedBuilder(
                 animation: pulseCtrl,
-                builder: (_, __) => Container(
+                builder: (context, child) => Container(
                   padding: const EdgeInsets.all(20),
                   decoration: BoxDecoration(
                     color: riskColor.withOpacity(0.05 + pulseCtrl.value * 0.03),

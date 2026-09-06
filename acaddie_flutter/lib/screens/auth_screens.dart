@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import '../services/auth_service.dart';
 import '../services/theme_service.dart';
 import '../models/user_model.dart';
@@ -71,69 +70,73 @@ class _LoginScreenState extends State<LoginScreen> {
                       : [const Color(0xFFE2E8F0), const Color(0xFFF1F5F9)],
                 ),
               ),
-              child: Padding(
-                padding: const EdgeInsets.all(52),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    AcaddieLogo(size: 52, isDark: isDark),
-                    const SizedBox(height: 36),
-                    Text(
-                      'Think. Simulate. Decide.',
-                      style: AppTypography.heading(
-                        fontSize: 38,
-                        fontWeight: FontWeight.w600,
-                        color: isDark ? Colors.white : const Color(0xFF0F172A),
-                        letterSpacing: 0.5,
+              child: Center(
+                child: SingleChildScrollView(
+                  padding: const EdgeInsets.symmetric(horizontal: 48, vertical: 40),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      AcaddieLogo(size: 52, isDark: isDark),
+                      const SizedBox(height: 36),
+                      Text(
+                        'Think. Simulate. Decide.',
+                        style: AppTypography.heading(
+                          fontSize: 38,
+                          fontWeight: FontWeight.w600,
+                          color: isDark ? Colors.white : const Color(0xFF0F172A),
+                          letterSpacing: 0.5,
+                        ),
                       ),
-                    ),
-                    const SizedBox(height: 12),
-                    Text(
-                      'Google Maps for Academic Decisions.\nSimulate downstream curriculum ripple effects before making syllabus modifications.',
-                      style: AppTypography.body(
-                        fontSize: 15,
-                        color: isDark ? const Color(0xFF94A3B8) : const Color(0xFF475569),
-                        height: 1.6,
+                      const SizedBox(height: 12),
+                      Text(
+                        'Google Maps for Academic Decisions.\nSimulate downstream curriculum ripple effects before making syllabus modifications.',
+                        style: AppTypography.body(
+                          fontSize: 15,
+                          color: isDark ? const Color(0xFF94A3B8) : const Color(0xFF475569),
+                          height: 1.6,
+                        ),
                       ),
-                    ),
-                    const SizedBox(height: 48),
+                      const SizedBox(height: 48),
 
-                    // Feature badges
-                    ...[
-                      '7 Core Academic Dimensions analysis',
-                      'Verifiable causal dependency chains',
-                      'Real-time animated curriculum ripple map',
-                      'What-If comparative alternatives (Plan A/B/C)',
-                    ].map((feature) => Padding(
-                          padding: const EdgeInsets.only(bottom: 12),
-                          child: Row(
-                            children: [
-                              Container(
-                                width: 20,
-                                height: 20,
-                                decoration: BoxDecoration(
-                                  color: const Color(0xFF0284C7).withValues(alpha: 0.2),
-                                  shape: BoxShape.circle,
+                      // Feature badges
+                      ...[
+                        '7 Core Academic Dimensions analysis',
+                        'Verifiable causal dependency chains',
+                        'Real-time animated curriculum ripple map',
+                        'What-If comparative alternatives (Plan A/B/C)',
+                      ].map((feature) => Padding(
+                            padding: const EdgeInsets.only(bottom: 12),
+                            child: Row(
+                              children: [
+                                Container(
+                                  width: 20,
+                                  height: 20,
+                                  decoration: BoxDecoration(
+                                    color: const Color(0xFF0284C7).withValues(alpha: 0.2),
+                                    shape: BoxShape.circle,
+                                  ),
+                                  child: const Icon(Icons.check,
+                                      color: Color(0xFF38BDF8), size: 13),
                                 ),
-                                child: const Icon(Icons.check,
-                                    color: Color(0xFF38BDF8), size: 13),
-                              ),
-                              const SizedBox(width: 10),
-                              Text(
-                                feature,
-                                style: AppTypography.body(
-                                  fontSize: 13,
-                                  color: isDark
-                                      ? const Color(0xFFCBD5E1)
-                                      : const Color(0xFF334155),
-                                  fontWeight: FontWeight.w500,
+                                const SizedBox(width: 10),
+                                Expanded(
+                                  child: Text(
+                                    feature,
+                                    style: AppTypography.body(
+                                      fontSize: 13,
+                                      color: isDark
+                                          ? const Color(0xFFCBD5E1)
+                                          : const Color(0xFF334155),
+                                      fontWeight: FontWeight.w500,
+                                    ),
+                                  ),
                                 ),
-                              ),
-                            ],
-                          ),
-                        )),
-                  ],
+                              ],
+                            ),
+                          )),
+                    ],
+                  ),
                 ),
               ),
             ),
@@ -469,83 +472,85 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       : [const Color(0xFFE2E8F0), const Color(0xFFF1F5F9)],
                 ),
               ),
-              child: Padding(
-                padding: const EdgeInsets.all(52),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    AcaddieLogo(size: 52, isDark: isDark),
-                    const SizedBox(height: 36),
-                    Text(
-                      'Faculty\nRegistration',
-                      style: AppTypography.heading(
-                        fontSize: 44,
-                        fontWeight: FontWeight.w600,
-                        color: isDark ? Colors.white : const Color(0xFF0F172A),
-                        height: 1.1,
+              child: Center(
+                child: SingleChildScrollView(
+                  padding: const EdgeInsets.symmetric(horizontal: 48, vertical: 40),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      AcaddieLogo(size: 52, isDark: isDark),
+                      const SizedBox(height: 36),
+                      Text(
+                        'Faculty\nRegistration',
+                        style: AppTypography.heading(
+                          fontSize: 44,
+                          fontWeight: FontWeight.w600,
+                          color: isDark ? Colors.white : const Color(0xFF0F172A),
+                          height: 1.1,
+                        ),
                       ),
-                    ),
-                    const SizedBox(height: 16),
-                    Text(
-                      'Create your official academic profile once.\nYour session will persist securely on this device.',
-                      style: AppTypography.body(
-                        fontSize: 15,
-                        color: isDark ? const Color(0xFF94A3B8) : const Color(0xFF475569),
-                        height: 1.6,
+                      const SizedBox(height: 16),
+                      Text(
+                        'Create your official academic profile once.\nYour session will persist securely on this device.',
+                        style: AppTypography.body(
+                          fontSize: 15,
+                          color: isDark ? const Color(0xFF94A3B8) : const Color(0xFF475569),
+                          height: 1.6,
+                        ),
                       ),
-                    ),
-                    const SizedBox(height: 36),
-                    Container(
-                      padding: const EdgeInsets.all(20),
-                      decoration: BoxDecoration(
-                        color: const Color(0xFF0284C7).withValues(alpha: 0.08),
-                        borderRadius: BorderRadius.circular(12),
-                        border: Border.all(
-                            color: const Color(0xFF0284C7).withValues(alpha: 0.2)),
-                      ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'Authorized Access Features:',
-                            style: AppTypography.body(
-                              fontSize: 13,
-                              fontWeight: FontWeight.bold,
-                              color: const Color(0xFF38BDF8),
+                      const SizedBox(height: 36),
+                      Container(
+                        padding: const EdgeInsets.all(20),
+                        decoration: BoxDecoration(
+                          color: const Color(0xFF0284C7).withValues(alpha: 0.08),
+                          borderRadius: BorderRadius.circular(12),
+                          border: Border.all(
+                              color: const Color(0xFF0284C7).withValues(alpha: 0.2)),
+                        ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              'Authorized Access Features:',
+                              style: AppTypography.body(
+                                fontSize: 13,
+                                fontWeight: FontWeight.bold,
+                                color: const Color(0xFF38BDF8),
+                              ),
                             ),
-                          ),
-                          const SizedBox(height: 12),
-                          ...[
-                            'Syllabus modification impact simulation',
-                            'Automated multi-hop downstream cascade mapping',
-                            'What-If comparative matrix analysis (Plans A, B, C)',
-                            'Printable official academic accreditation reports',
-                          ].map((t) => Padding(
-                                padding: const EdgeInsets.only(bottom: 8),
-                                child: Row(
-                                  children: [
-                                    const Icon(Icons.check_circle,
-                                        color: Color(0xFF10B981), size: 16),
-                                    const SizedBox(width: 8),
-                                    Expanded(
-                                      child: Text(
-                                        t,
-                                        style: AppTypography.body(
-                                          fontSize: 12,
-                                          color: isDark
-                                              ? const Color(0xFF94A3B8)
-                                              : const Color(0xFF475569),
+                            const SizedBox(height: 12),
+                            ...[
+                              'Syllabus modification impact simulation',
+                              'Automated multi-hop downstream cascade mapping',
+                              'What-If comparative matrix analysis (Plans A, B, C)',
+                              'Printable official academic accreditation reports',
+                            ].map((t) => Padding(
+                                  padding: const EdgeInsets.only(bottom: 8),
+                                  child: Row(
+                                    children: [
+                                      const Icon(Icons.check_circle,
+                                          color: Color(0xFF10B981), size: 16),
+                                      const SizedBox(width: 8),
+                                      Expanded(
+                                        child: Text(
+                                          t,
+                                          style: AppTypography.body(
+                                            fontSize: 12,
+                                            color: isDark
+                                                ? const Color(0xFF94A3B8)
+                                                : const Color(0xFF475569),
+                                          ),
                                         ),
                                       ),
-                                    ),
-                                  ],
-                                ),
-                              )),
-                        ],
+                                    ],
+                                  ),
+                                )),
+                          ],
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             ),
