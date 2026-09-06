@@ -1,0 +1,2276 @@
+[
+  {
+    "simulationId": "sim-1788671334327-lxo5m",
+    "timestamp": "2026-09-06T05:08:54.327Z",
+    "course": {
+      "id": "CSE-207",
+      "code": "CSE 207",
+      "name": "Data Structures",
+      "semester": 3,
+      "credit": 3
+    },
+    "action": "REMOVE_TOPIC",
+    "targetTopic": {
+      "id": "DS-6",
+      "name": "Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)",
+      "weeks": 3.5
+    },
+    "overallScore": 76,
+    "riskLevel": "HIGH",
+    "riskColor": "crimson",
+    "confidence": 98,
+    "facultyDecision": "PENDING_FACULTY_DECISION",
+    "facultyNotes": "",
+    "summary": "High-Risk Curriculum Modification: Removing \"Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)\" triggers cascade across 5 subsequent courses.",
+    "fullData": {
+      "simulationId": "sim-1788671334327-lxo5m",
+      "timestamp": "2026-09-06T05:08:54.327Z",
+      "university": {
+        "name": "Ahsanullah University of Science and Technology",
+        "shortName": "AUST",
+        "department": "Department of Computer Science and Engineering",
+        "program": "Bachelor of Science in Computer Science and Engineering",
+        "degree": "BSc in CSE",
+        "curriculumVersion": "2025-2026 Outcome-Based Education (OBE) Standard",
+        "totalCredits": 160,
+        "passingGrade": 2
+      },
+      "course": {
+        "id": "CSE-207",
+        "code": "CSE 207",
+        "name": "Data Structures",
+        "semester": 3,
+        "credit": 3
+      },
+      "action": "REMOVE_TOPIC",
+      "targetTopic": {
+        "id": "DS-6",
+        "name": "Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)",
+        "weeks": 3.5
+      },
+      "facultyReason": "Routine curriculum review and optimization.",
+      "confidence": 98,
+      "beforeState": {
+        "totalTopics": 8,
+        "totalWeeks": 16,
+        "targetTopicWeeks": 3.5,
+        "cloCoverage": "85% on CSE207-CLO3",
+        "theoryPracticalRatio": "65% Theory / 35% Practical"
+      },
+      "afterState": {
+        "totalTopics": 7,
+        "totalWeeks": 12.5,
+        "targetTopicWeeks": 0,
+        "cloCoverage": "62% on CSE207-CLO3 (Δ -23%)",
+        "theoryPracticalRatio": "75% Theory / 25% Practical"
+      },
+      "overallScore": 76,
+      "riskLevel": "HIGH",
+      "riskColor": "crimson",
+      "riskLabel": "High Risk / Critical Curriculum Disruption",
+      "breakdown": [
+        {
+          "name": "CLO Impact",
+          "score": 72,
+          "weight": "30%",
+          "weightedContribution": 21.6,
+          "description": "Measures loss or degradation in mapped Course Learning Outcomes."
+        },
+        {
+          "name": "Prerequisite Risk",
+          "score": 85,
+          "weight": "25%",
+          "weightedContribution": 21.3,
+          "description": "Evaluates broken foundational readiness for directly dependent courses."
+        },
+        {
+          "name": "Downstream Course Impact",
+          "score": 80,
+          "weight": "20%",
+          "weightedContribution": 16,
+          "description": "Measures transitive ripple effects through the university curriculum graph."
+        },
+        {
+          "name": "Curriculum Gap Detection",
+          "score": 90,
+          "weight": "10%",
+          "weightedContribution": 9,
+          "description": "Identifies core academic competencies left completely untaught."
+        },
+        {
+          "name": "Assessment Balance Impact",
+          "score": 61,
+          "weight": "10%",
+          "weightedContribution": 6.1,
+          "description": "Detects shifts between theoretical rigor and practical laboratory hours."
+        },
+        {
+          "name": "Course Overlap & Placement",
+          "score": 45,
+          "weight": "5%",
+          "weightedContribution": 2.3,
+          "description": "Analyzes redundant duplication or misplaced topics across academic semesters."
+        }
+      ],
+      "formula": "Overall = (CLO × 0.30) + (Prereq × 0.25) + (Downstream × 0.20) + (Gap × 0.10) + (Assessment × 0.10) + (Overlap × 0.05)",
+      "cloImpact": [
+        {
+          "cloId": "CSE207-CLO1",
+          "description": "Analyze asymptotic computational time and space bounds for operations on diverse data structures.",
+          "bloomLevel": "Analyze",
+          "beforeCoverage": 82,
+          "afterCoverage": 82,
+          "delta": 0,
+          "severity": "LOW",
+          "explanation": "Unaffected by this specific topic modification."
+        },
+        {
+          "cloId": "CSE207-CLO2",
+          "description": "Implement fundamental linear data structures (arrays, linked lists, stacks, queues) to solve real-world processing bottlenecks.",
+          "bloomLevel": "Apply",
+          "beforeCoverage": 82,
+          "afterCoverage": 82,
+          "delta": 0,
+          "severity": "LOW",
+          "explanation": "Unaffected by this specific topic modification."
+        },
+        {
+          "cloId": "CSE207-CLO3",
+          "description": "Design efficient recursive, tree, and graph algorithms for network traversals, shortest paths, and search spaces.",
+          "bloomLevel": "Create",
+          "beforeCoverage": 85,
+          "afterCoverage": 62,
+          "delta": -23,
+          "severity": "HIGH",
+          "explanation": "Coverage for CSE207-CLO3 drops by 23% (85% ➔ 62%) due to removal of dedicated instruction on \"Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)\"."
+        },
+        {
+          "cloId": "CSE207-CLO4",
+          "description": "Evaluate trade-offs between memory footprint and access speed in hashing and balanced search trees.",
+          "bloomLevel": "Evaluate",
+          "beforeCoverage": 82,
+          "afterCoverage": 82,
+          "delta": 0,
+          "severity": "LOW",
+          "explanation": "Unaffected by this specific topic modification."
+        }
+      ],
+      "prerequisiteImpact": {
+        "score": 85,
+        "riskLevel": "HIGH",
+        "brokenDependenciesCount": 6,
+        "brokenTopics": [
+          "CSE 301: Advanced Graph Algorithms (Bellman-Ford, Floyd-Warshall, Max-Flow Ford-Fulkerson)",
+          "CSE 401: Heuristic State-Space Search (A*, IDA*, Graph Traversals)",
+          "CSE 307: Deadlock Detection & Resource Allocation Directed Graphs",
+          "CSE 405: Graph Neural Networks & Node Embedding Representations",
+          "CSE 401: Bayesian Reasoning & Directed Acyclic Belief Graphs",
+          "CSE 301: NP-Completeness, Reductions & Approximation"
+        ],
+        "summary": "Foundational knowledge gap: 6 downstream topics explicitly depend on \"Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)\"."
+      },
+      "downstreamImpact": [
+        {
+          "courseId": "CSE-301",
+          "courseCode": "CSE 301",
+          "courseName": "Algorithms",
+          "semester": 4,
+          "distance": 1,
+          "impactScore": 85,
+          "riskLevel": "HIGH",
+          "affectedTopics": [
+            "Advanced Graph Algorithms (Bellman-Ford, Floyd-Warshall, Max-Flow Ford-Fulkerson)",
+            "NP-Completeness, Reductions & Approximation"
+          ],
+          "reason": "CSE 301 contains topics (Advanced Graph Algorithms (Bellman-Ford, Floyd-Warshall, Max-Flow Ford-Fulkerson), NP-Completeness, Reductions & Approximation) that directly require concepts from \"Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)\"."
+        },
+        {
+          "courseId": "CSE-305",
+          "courseCode": "CSE 305",
+          "courseName": "Database Systems",
+          "semester": 4,
+          "distance": 1,
+          "impactScore": 65,
+          "riskLevel": "MEDIUM",
+          "affectedTopics": [],
+          "reason": "Indirect prerequisite relationship via semester progression sequence."
+        },
+        {
+          "courseId": "CSE-307",
+          "courseCode": "CSE 307",
+          "courseName": "Operating Systems",
+          "semester": 5,
+          "distance": 1,
+          "impactScore": 85,
+          "riskLevel": "HIGH",
+          "affectedTopics": [
+            "Deadlock Detection & Resource Allocation Directed Graphs"
+          ],
+          "reason": "CSE 307 contains topics (Deadlock Detection & Resource Allocation Directed Graphs) that directly require concepts from \"Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)\"."
+        },
+        {
+          "courseId": "CSE-401",
+          "courseCode": "CSE 401",
+          "courseName": "Artificial Intelligence",
+          "semester": 6,
+          "distance": 2,
+          "impactScore": 65,
+          "riskLevel": "MEDIUM",
+          "affectedTopics": [
+            "Heuristic State-Space Search (A*, IDA*, Graph Traversals)",
+            "Bayesian Reasoning & Directed Acyclic Belief Graphs"
+          ],
+          "reason": "CSE 401 contains topics (Heuristic State-Space Search (A*, IDA*, Graph Traversals), Bayesian Reasoning & Directed Acyclic Belief Graphs) that directly require concepts from \"Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)\"."
+        },
+        {
+          "courseId": "CSE-405",
+          "courseCode": "CSE 405",
+          "courseName": "Machine Learning",
+          "semester": 7,
+          "distance": 2,
+          "impactScore": 65,
+          "riskLevel": "MEDIUM",
+          "affectedTopics": [
+            "Graph Neural Networks & Node Embedding Representations"
+          ],
+          "reason": "CSE 405 contains topics (Graph Neural Networks & Node Embedding Representations) that directly require concepts from \"Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)\"."
+        }
+      ],
+      "assessmentImpact": {
+        "score": 61,
+        "riskLevel": "MEDIUM",
+        "currentTheory": 65,
+        "currentPractical": 35,
+        "predictedTheory": 75,
+        "predictedPractical": 25,
+        "explanation": "Removing practical algorithmic implementations from \"Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)\" creates a 10% skew toward passive theoretical examinations."
+      },
+      "curriculumGaps": [
+        {
+          "severity": "CRITICAL",
+          "concept": "Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST) Core Fundamentals",
+          "description": "Students will graduate without structured academic coursework in Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST) representations and traversal algorithms.",
+          "suggestedRemedy": "Transfer foundational Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST) into CSE 301 (Algorithms) before eliminating from CSE 207."
+        }
+      ],
+      "studentReadiness": {
+        "score": 75,
+        "riskLevel": "HIGH",
+        "targetCohort": "Students advancing from Semester 3 to Semester 4",
+        "frictionPoint": "High entry friction in subsequent algorithmic and search courses. Faculty will face 25-35% failure rates on initial lab assignments without prior familiarity with Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)."
+      },
+      "overlaps": [
+        {
+          "courseCode": "CSE 301",
+          "courseName": "Algorithms",
+          "topicName": "Advanced Graph Algorithms",
+          "overlapType": "CURRICULAR_PROGRESSION",
+          "note": "Currently, CSE 301 assumes CSE 207 covered basic BFS/DFS. Removing it creates an unbridgeable conceptual canyon."
+        }
+      ],
+      "rippleEffect": [
+        {
+          "nodeId": "CSE-207",
+          "name": "CSE 207: Data Structures",
+          "level": "SOURCE_CHANGE",
+          "color": "crimson",
+          "impactScore": 76,
+          "badge": "Proposed Deletion",
+          "role": "Origin Course",
+          "details": "Topic \"Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)\" removed (3.5 weeks lost)"
+        },
+        {
+          "nodeId": "CSE-301",
+          "name": "CSE 301: Algorithms",
+          "level": "HIGH",
+          "color": "crimson",
+          "impactScore": 85,
+          "badge": "HIGH Impact (Distance: 1)",
+          "role": "Direct Child Prerequisite",
+          "details": "CSE 301 contains topics (Advanced Graph Algorithms (Bellman-Ford, Floyd-Warshall, Max-Flow Ford-Fulkerson), NP-Completeness, Reductions & Approximation) that directly require concepts from \"Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)\"."
+        },
+        {
+          "nodeId": "CSE-305",
+          "name": "CSE 305: Database Systems",
+          "level": "MEDIUM",
+          "color": "amber",
+          "impactScore": 65,
+          "badge": "MEDIUM Impact (Distance: 1)",
+          "role": "Direct Child Prerequisite",
+          "details": "Indirect prerequisite relationship via semester progression sequence."
+        },
+        {
+          "nodeId": "CSE-307",
+          "name": "CSE 307: Operating Systems",
+          "level": "HIGH",
+          "color": "crimson",
+          "impactScore": 85,
+          "badge": "HIGH Impact (Distance: 1)",
+          "role": "Direct Child Prerequisite",
+          "details": "CSE 307 contains topics (Deadlock Detection & Resource Allocation Directed Graphs) that directly require concepts from \"Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)\"."
+        },
+        {
+          "nodeId": "CSE-401",
+          "name": "CSE 401: Artificial Intelligence",
+          "level": "MEDIUM",
+          "color": "amber",
+          "impactScore": 65,
+          "badge": "MEDIUM Impact (Distance: 2)",
+          "role": "Transitive Downstream Course",
+          "details": "CSE 401 contains topics (Heuristic State-Space Search (A*, IDA*, Graph Traversals), Bayesian Reasoning & Directed Acyclic Belief Graphs) that directly require concepts from \"Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)\"."
+        },
+        {
+          "nodeId": "CSE-405",
+          "name": "CSE 405: Machine Learning",
+          "level": "MEDIUM",
+          "color": "amber",
+          "impactScore": 65,
+          "badge": "MEDIUM Impact (Distance: 2)",
+          "role": "Transitive Downstream Course",
+          "details": "CSE 405 contains topics (Graph Neural Networks & Node Embedding Representations) that directly require concepts from \"Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)\"."
+        }
+      ],
+      "evidenceItems": [
+        {
+          "id": "ev-prereq",
+          "dimension": "Prerequisite Risk",
+          "evidenceType": "VERIFIED_STRUCTURAL_RELATION",
+          "title": "Prerequisite Disruption for 6 Downstream Topics",
+          "summary": "Removing \"Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)\" breaks the verified curricular dependency chain documented in the Department OBE syllabus.",
+          "paths": [
+            {
+              "fromCourse": "CSE 207 (Data Structures)",
+              "fromTopic": "Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)",
+              "relation": "IS_FOUNDATIONAL_PREREQUISITE_FOR",
+              "toCourse": "CSE 301 (Algorithms)",
+              "toTopic": "Advanced Graph Algorithms (Bellman-Ford, Floyd-Warshall, Max-Flow Ford-Fulkerson)",
+              "academicReason": "CSE 301 syllabus assumes prior mastery of fundamental concepts from \"Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)\"."
+            },
+            {
+              "fromCourse": "CSE 207 (Data Structures)",
+              "fromTopic": "Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)",
+              "relation": "IS_FOUNDATIONAL_PREREQUISITE_FOR",
+              "toCourse": "CSE 401 (Artificial Intelligence)",
+              "toTopic": "Heuristic State-Space Search (A*, IDA*, Graph Traversals)",
+              "academicReason": "CSE 401 syllabus assumes prior mastery of fundamental concepts from \"Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)\"."
+            },
+            {
+              "fromCourse": "CSE 207 (Data Structures)",
+              "fromTopic": "Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)",
+              "relation": "IS_FOUNDATIONAL_PREREQUISITE_FOR",
+              "toCourse": "CSE 307 (Operating Systems)",
+              "toTopic": "Deadlock Detection & Resource Allocation Directed Graphs",
+              "academicReason": "CSE 307 syllabus assumes prior mastery of fundamental concepts from \"Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)\"."
+            },
+            {
+              "fromCourse": "CSE 207 (Data Structures)",
+              "fromTopic": "Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)",
+              "relation": "IS_FOUNDATIONAL_PREREQUISITE_FOR",
+              "toCourse": "CSE 405 (Machine Learning)",
+              "toTopic": "Graph Neural Networks & Node Embedding Representations",
+              "academicReason": "CSE 405 syllabus assumes prior mastery of fundamental concepts from \"Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)\"."
+            },
+            {
+              "fromCourse": "CSE 207 (Data Structures)",
+              "fromTopic": "Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)",
+              "relation": "IS_FOUNDATIONAL_PREREQUISITE_FOR",
+              "toCourse": "CSE 401 (Artificial Intelligence)",
+              "toTopic": "Bayesian Reasoning & Directed Acyclic Belief Graphs",
+              "academicReason": "CSE 401 syllabus assumes prior mastery of fundamental concepts from \"Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)\"."
+            },
+            {
+              "fromCourse": "CSE 207 (Data Structures)",
+              "fromTopic": "Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)",
+              "relation": "IS_FOUNDATIONAL_PREREQUISITE_FOR",
+              "toCourse": "CSE 301 (Algorithms)",
+              "toTopic": "NP-Completeness, Reductions & Approximation",
+              "academicReason": "CSE 301 syllabus assumes prior mastery of fundamental concepts from \"Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)\"."
+            }
+          ],
+          "graphChain": [
+            "CSE 207: Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)",
+            "CSE 301: Advanced Graph Algorithms (Bellman-Ford, Floyd-Warshall, Max-Flow Ford-Fulkerson)",
+            "CSE 401: Heuristic State-Space Search (A*, IDA*, Graph Traversals)",
+            "CSE 307: Deadlock Detection & Resource Allocation Directed Graphs",
+            "CSE 405: Graph Neural Networks & Node Embedding Representations",
+            "CSE 401: Bayesian Reasoning & Directed Acyclic Belief Graphs",
+            "CSE 301: NP-Completeness, Reductions & Approximation"
+          ],
+          "academicStandardReference": "OBE Accreditation Standard 3: Articulation of Prerequisite Sequences (IEEE/ACM CS Curricula 2023)."
+        },
+        {
+          "id": "ev-clo",
+          "dimension": "CLO Impact",
+          "evidenceType": "VERIFIED_STRUCTURAL_RELATION",
+          "title": "Direct Contributor to CSE207-CLO3 (Create)",
+          "summary": "Topic \"Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)\" accounts for substantial instruction towards \"Design efficient recursive, tree, and graph algorithms for network traversals, shortest paths, and search spaces.\".",
+          "paths": [
+            {
+              "fromCourse": "CSE 207",
+              "fromTopic": "Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)",
+              "relation": "DIRECTLY_ASSESSES_CLO",
+              "toCourse": "CSE 207",
+              "toTopic": "CSE207-CLO3",
+              "academicReason": "This topic provides 3.5 weeks of dedicated instructional contact time for CSE207-CLO3."
+            }
+          ],
+          "graphChain": [
+            "CSE 207 ➔ Topic: Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST) (3.5 wks)",
+            "CSE207-CLO3 [Create Level] ➔ Target Competency Achieved: 35%"
+          ],
+          "academicStandardReference": "ABET Criterion 3: Student Outcomes Assessment & Program Educational Objectives."
+        },
+        {
+          "id": "ev-readiness",
+          "dimension": "Student Readiness",
+          "evidenceType": "CURRICULUM_MODELING_INFERENCE",
+          "title": "Cohort Transition Gap in CSE 301",
+          "summary": "Faculty teaching CSE 301 will need to spend 2-3 weeks of remedial review if students arrive without foundational \"Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)\" training.",
+          "paths": [
+            {
+              "fromCourse": "CSE 207 (Sem 3)",
+              "fromTopic": "Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)",
+              "relation": "FEEDS_STUDENT_COHORT_INTO",
+              "toCourse": "CSE 301 (Sem 4)",
+              "toTopic": "Course Entry Readiness",
+              "academicReason": "Expected entry competency requires implementation proficiency in Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)."
+            }
+          ],
+          "graphChain": [
+            "Semester 3: CSE 207 (Topic: Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST))",
+            "Semester Break / Cohort Advancement",
+            "Semester 4: CSE 301 (Advanced Topics)"
+          ],
+          "academicStandardReference": "Faculty Senate Academic Policy on Prerequisite Knowledge Transfer."
+        }
+      ],
+      "executiveSummary": {
+        "headline": "High-Risk Curriculum Modification: Removing \"Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)\" triggers cascade across 5 subsequent courses.",
+        "overallAssessment": "The proposed deletion of \"Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)\" from CSE 207 carries an overall modeled impact score of 76/100 (HIGH RISK). While it relieves 3.5 weeks of course density, it destabilizes prerequisite readiness for CSE 301 (Algorithms) and CSE 401 (Artificial Intelligence).",
+        "keyRisks": [
+          "CLO Coverage Reduction: CSE207-CLO3 drops by 23% (85% ➔ 62%).",
+          "Prerequisite Invalidation: 6 downstream topics lose required conceptual foundations.",
+          "Downstream Cascade: Direct child course CSE 301 (Algorithms) suffers critical instructional disruption.",
+          "Critical Knowledge Gap: Standard OBE competencies in graph representations and search spaces omitted."
+        ],
+        "recommendedAction": "Adopt Plan C (Relocate topic to CSE 301 Algorithms) or Plan B (Retain 1.5-week core subset) to maintain accreditation integrity."
+      },
+      "alternatives": [
+        {
+          "id": "plan-a",
+          "name": "Plan A: Proposed Full Removal",
+          "tag": "Proposed Action",
+          "description": "Permanently delete \"Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)\" from CSE 207.",
+          "overallImpact": 76,
+          "riskLevel": "HIGH",
+          "riskColor": "crimson",
+          "cloImpact": "High (Severe coverage drop)",
+          "prerequisiteRisk": "High (Multiple downstream topics broken)",
+          "downstreamRisk": "High (Algorithms & AI affected)",
+          "curriculumGap": "High (Critical traversal concepts untaught)",
+          "assessmentRisk": "Medium (Marks shifted to other topics)",
+          "studentReadiness": "High (Incoming cohort lacking fundamentals)",
+          "pros": [
+            "Frees up 3.5 weeks in CSE 207 for existing topics.",
+            "Reduces initial student cognitive overload in early semester."
+          ],
+          "cons": [
+            "Creates severe downstream knowledge gaps in Algorithms and AI.",
+            "Breaks CLO-3 accreditation alignment.",
+            "Faculty in downstream courses will need to teach prerequisite concepts from scratch."
+          ],
+          "recommendationRationale": "Not recommended as-is due to high cascade risk across 3 subsequent semesters."
+        },
+        {
+          "id": "plan-b",
+          "name": "Plan B: Scope Reduction (Essential Subset)",
+          "tag": "Recommended Compromise",
+          "description": "Retain core concepts of \"Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)\" (BFS/DFS, Representations) but reduce instructional time from 3.5 weeks to 1.5 weeks. Omit advanced topics like Minimum Spanning Trees and Bellman-Ford.",
+          "overallImpact": 42,
+          "riskLevel": "MEDIUM",
+          "riskColor": "amber",
+          "cloImpact": "Medium (Essential concepts preserved)",
+          "prerequisiteRisk": "Medium (Basic traversal preserved; advanced topics deferred)",
+          "downstreamRisk": "Medium (Algorithms can build on basic BFS/DFS)",
+          "curriculumGap": "Low (Core foundations intact)",
+          "assessmentRisk": "Low (Minor re-weighting)",
+          "studentReadiness": "Medium (Students know basic data structures)",
+          "pros": [
+            "Frees 2.0 weeks of instructional time in CSE 207.",
+            "Preserves prerequisite readiness for CSE 301 Algorithms.",
+            "Students maintain exposure to fundamental graph search algorithms."
+          ],
+          "cons": [
+            "Leaves less time for hands-on programming projects on graphs.",
+            "Slightly compresses coverage of Dijkstra's algorithm."
+          ],
+          "recommendationRationale": "Provides a balanced compromise: reduces syllabus congestion while preserving necessary prerequisite readiness."
+        },
+        {
+          "id": "plan-c",
+          "name": "Plan C: Curricular Relocation (Move to Algorithms)",
+          "tag": "Lowest Modeled Impact",
+          "isSafest": true,
+          "description": "Move the in-depth treatment of \"Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)\" to CSE 301 (Algorithms), while keeping only a 1-week conceptual overview in CSE 207. Formally update the CSE 301 course syllabus and credits accordingly.",
+          "overallImpact": 26,
+          "riskLevel": "LOW",
+          "riskColor": "emerald",
+          "cloImpact": "Low (CLO re-allocated to CSE 301)",
+          "prerequisiteRisk": "Low (Taught at the immediate point of need in Algorithms)",
+          "downstreamRisk": "Low (Algorithms syllabus absorbs and structures the topic)",
+          "curriculumGap": "Low (Zero net loss in curriculum-wide knowledge)",
+          "assessmentRisk": "Low (Harmonized across semesters)",
+          "studentReadiness": "Low (Continuously reinforced in algorithmic context)",
+          "pros": [
+            "Zero total knowledge loss across the degree program.",
+            "Allows Graph Algorithms to be taught with greater mathematical maturity in Semester 4.",
+            "Eliminates conceptual redundancy between Data Structures and Algorithms."
+          ],
+          "cons": [
+            "Requires coordinated syllabus approval across two faculty instructors.",
+            "CSE 301 syllabus will need 2 additional weeks of instructional time."
+          ],
+          "recommendationRationale": "Model indicates lowest structural risk (26/100). Foundational concepts remain in the degree program without breaking downstream courses."
+        }
+      ],
+      "aiEnrichment": {
+        "isAiEnriched": false,
+        "engineMode": "LOCAL_DETERMINISTIC_ENGINE",
+        "engineBadge": "Local Academic Simulation Engine (Deterministic)",
+        "aiNotes": "Running in zero-latency deterministic academic modeling mode. Graph analysis, CLO mappings, and scores are mathematically verified."
+      },
+      "facultyControl": {
+        "status": "PENDING_FACULTY_DECISION",
+        "availableActions": [
+          "ACCEPT_PROPOSAL",
+          "MODIFY_PROPOSAL",
+          "REJECT_PROPOSAL",
+          "SEND_FOR_COMMITTEE_REVIEW"
+        ],
+        "notes": ""
+      }
+    }
+  },
+  {
+    "simulationId": "sim-1788671192519-258s8",
+    "timestamp": "2026-09-06T05:06:32.519Z",
+    "course": {
+      "id": "CSE-207",
+      "code": "CSE 207",
+      "name": "Data Structures",
+      "semester": 3,
+      "credit": 3
+    },
+    "action": "REMOVE_TOPIC",
+    "targetTopic": {
+      "id": "DS-6",
+      "name": "Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)",
+      "weeks": 3.5
+    },
+    "overallScore": 76,
+    "riskLevel": "HIGH",
+    "riskColor": "crimson",
+    "confidence": 98,
+    "facultyDecision": "PENDING_FACULTY_DECISION",
+    "facultyNotes": "",
+    "summary": "High-Risk Curriculum Modification: Removing \"Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)\" triggers cascade across 5 subsequent courses.",
+    "fullData": {
+      "simulationId": "sim-1788671192519-258s8",
+      "timestamp": "2026-09-06T05:06:32.519Z",
+      "university": {
+        "name": "Ahsanullah University of Science and Technology",
+        "shortName": "AUST",
+        "department": "Department of Computer Science and Engineering",
+        "program": "Bachelor of Science in Computer Science and Engineering",
+        "degree": "BSc in CSE",
+        "curriculumVersion": "2025-2026 Outcome-Based Education (OBE) Standard",
+        "totalCredits": 160,
+        "passingGrade": 2
+      },
+      "course": {
+        "id": "CSE-207",
+        "code": "CSE 207",
+        "name": "Data Structures",
+        "semester": 3,
+        "credit": 3
+      },
+      "action": "REMOVE_TOPIC",
+      "targetTopic": {
+        "id": "DS-6",
+        "name": "Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)",
+        "weeks": 3.5
+      },
+      "facultyReason": "Routine curriculum review and optimization.",
+      "confidence": 98,
+      "beforeState": {
+        "totalTopics": 8,
+        "totalWeeks": 16,
+        "targetTopicWeeks": 3.5,
+        "cloCoverage": "85% on CSE207-CLO3",
+        "theoryPracticalRatio": "65% Theory / 35% Practical"
+      },
+      "afterState": {
+        "totalTopics": 7,
+        "totalWeeks": 12.5,
+        "targetTopicWeeks": 0,
+        "cloCoverage": "62% on CSE207-CLO3 (Δ -23%)",
+        "theoryPracticalRatio": "75% Theory / 25% Practical"
+      },
+      "overallScore": 76,
+      "riskLevel": "HIGH",
+      "riskColor": "crimson",
+      "riskLabel": "High Risk / Critical Curriculum Disruption",
+      "breakdown": [
+        {
+          "name": "CLO Impact",
+          "score": 72,
+          "weight": "30%",
+          "weightedContribution": 21.6,
+          "description": "Measures loss or degradation in mapped Course Learning Outcomes."
+        },
+        {
+          "name": "Prerequisite Risk",
+          "score": 85,
+          "weight": "25%",
+          "weightedContribution": 21.3,
+          "description": "Evaluates broken foundational readiness for directly dependent courses."
+        },
+        {
+          "name": "Downstream Course Impact",
+          "score": 80,
+          "weight": "20%",
+          "weightedContribution": 16,
+          "description": "Measures transitive ripple effects through the university curriculum graph."
+        },
+        {
+          "name": "Curriculum Gap Detection",
+          "score": 90,
+          "weight": "10%",
+          "weightedContribution": 9,
+          "description": "Identifies core academic competencies left completely untaught."
+        },
+        {
+          "name": "Assessment Balance Impact",
+          "score": 61,
+          "weight": "10%",
+          "weightedContribution": 6.1,
+          "description": "Detects shifts between theoretical rigor and practical laboratory hours."
+        },
+        {
+          "name": "Course Overlap & Placement",
+          "score": 45,
+          "weight": "5%",
+          "weightedContribution": 2.3,
+          "description": "Analyzes redundant duplication or misplaced topics across academic semesters."
+        }
+      ],
+      "formula": "Overall = (CLO × 0.30) + (Prereq × 0.25) + (Downstream × 0.20) + (Gap × 0.10) + (Assessment × 0.10) + (Overlap × 0.05)",
+      "cloImpact": [
+        {
+          "cloId": "CSE207-CLO1",
+          "description": "Analyze asymptotic computational time and space bounds for operations on diverse data structures.",
+          "bloomLevel": "Analyze",
+          "beforeCoverage": 82,
+          "afterCoverage": 82,
+          "delta": 0,
+          "severity": "LOW",
+          "explanation": "Unaffected by this specific topic modification."
+        },
+        {
+          "cloId": "CSE207-CLO2",
+          "description": "Implement fundamental linear data structures (arrays, linked lists, stacks, queues) to solve real-world processing bottlenecks.",
+          "bloomLevel": "Apply",
+          "beforeCoverage": 82,
+          "afterCoverage": 82,
+          "delta": 0,
+          "severity": "LOW",
+          "explanation": "Unaffected by this specific topic modification."
+        },
+        {
+          "cloId": "CSE207-CLO3",
+          "description": "Design efficient recursive, tree, and graph algorithms for network traversals, shortest paths, and search spaces.",
+          "bloomLevel": "Create",
+          "beforeCoverage": 85,
+          "afterCoverage": 62,
+          "delta": -23,
+          "severity": "HIGH",
+          "explanation": "Coverage for CSE207-CLO3 drops by 23% (85% ➔ 62%) due to removal of dedicated instruction on \"Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)\"."
+        },
+        {
+          "cloId": "CSE207-CLO4",
+          "description": "Evaluate trade-offs between memory footprint and access speed in hashing and balanced search trees.",
+          "bloomLevel": "Evaluate",
+          "beforeCoverage": 82,
+          "afterCoverage": 82,
+          "delta": 0,
+          "severity": "LOW",
+          "explanation": "Unaffected by this specific topic modification."
+        }
+      ],
+      "prerequisiteImpact": {
+        "score": 85,
+        "riskLevel": "HIGH",
+        "brokenDependenciesCount": 6,
+        "brokenTopics": [
+          "CSE 301: Advanced Graph Algorithms (Bellman-Ford, Floyd-Warshall, Max-Flow Ford-Fulkerson)",
+          "CSE 401: Heuristic State-Space Search (A*, IDA*, Graph Traversals)",
+          "CSE 307: Deadlock Detection & Resource Allocation Directed Graphs",
+          "CSE 405: Graph Neural Networks & Node Embedding Representations",
+          "CSE 401: Bayesian Reasoning & Directed Acyclic Belief Graphs",
+          "CSE 301: NP-Completeness, Reductions & Approximation"
+        ],
+        "summary": "Foundational knowledge gap: 6 downstream topics explicitly depend on \"Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)\"."
+      },
+      "downstreamImpact": [
+        {
+          "courseId": "CSE-301",
+          "courseCode": "CSE 301",
+          "courseName": "Algorithms",
+          "semester": 4,
+          "distance": 1,
+          "impactScore": 85,
+          "riskLevel": "HIGH",
+          "affectedTopics": [
+            "Advanced Graph Algorithms (Bellman-Ford, Floyd-Warshall, Max-Flow Ford-Fulkerson)",
+            "NP-Completeness, Reductions & Approximation"
+          ],
+          "reason": "CSE 301 contains topics (Advanced Graph Algorithms (Bellman-Ford, Floyd-Warshall, Max-Flow Ford-Fulkerson), NP-Completeness, Reductions & Approximation) that directly require concepts from \"Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)\"."
+        },
+        {
+          "courseId": "CSE-305",
+          "courseCode": "CSE 305",
+          "courseName": "Database Systems",
+          "semester": 4,
+          "distance": 1,
+          "impactScore": 65,
+          "riskLevel": "MEDIUM",
+          "affectedTopics": [],
+          "reason": "Indirect prerequisite relationship via semester progression sequence."
+        },
+        {
+          "courseId": "CSE-307",
+          "courseCode": "CSE 307",
+          "courseName": "Operating Systems",
+          "semester": 5,
+          "distance": 1,
+          "impactScore": 85,
+          "riskLevel": "HIGH",
+          "affectedTopics": [
+            "Deadlock Detection & Resource Allocation Directed Graphs"
+          ],
+          "reason": "CSE 307 contains topics (Deadlock Detection & Resource Allocation Directed Graphs) that directly require concepts from \"Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)\"."
+        },
+        {
+          "courseId": "CSE-401",
+          "courseCode": "CSE 401",
+          "courseName": "Artificial Intelligence",
+          "semester": 6,
+          "distance": 2,
+          "impactScore": 65,
+          "riskLevel": "MEDIUM",
+          "affectedTopics": [
+            "Heuristic State-Space Search (A*, IDA*, Graph Traversals)",
+            "Bayesian Reasoning & Directed Acyclic Belief Graphs"
+          ],
+          "reason": "CSE 401 contains topics (Heuristic State-Space Search (A*, IDA*, Graph Traversals), Bayesian Reasoning & Directed Acyclic Belief Graphs) that directly require concepts from \"Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)\"."
+        },
+        {
+          "courseId": "CSE-405",
+          "courseCode": "CSE 405",
+          "courseName": "Machine Learning",
+          "semester": 7,
+          "distance": 2,
+          "impactScore": 65,
+          "riskLevel": "MEDIUM",
+          "affectedTopics": [
+            "Graph Neural Networks & Node Embedding Representations"
+          ],
+          "reason": "CSE 405 contains topics (Graph Neural Networks & Node Embedding Representations) that directly require concepts from \"Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)\"."
+        }
+      ],
+      "assessmentImpact": {
+        "score": 61,
+        "riskLevel": "MEDIUM",
+        "currentTheory": 65,
+        "currentPractical": 35,
+        "predictedTheory": 75,
+        "predictedPractical": 25,
+        "explanation": "Removing practical algorithmic implementations from \"Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)\" creates a 10% skew toward passive theoretical examinations."
+      },
+      "curriculumGaps": [
+        {
+          "severity": "CRITICAL",
+          "concept": "Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST) Core Fundamentals",
+          "description": "Students will graduate without structured academic coursework in Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST) representations and traversal algorithms.",
+          "suggestedRemedy": "Transfer foundational Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST) into CSE 301 (Algorithms) before eliminating from CSE 207."
+        }
+      ],
+      "studentReadiness": {
+        "score": 75,
+        "riskLevel": "HIGH",
+        "targetCohort": "Students advancing from Semester 3 to Semester 4",
+        "frictionPoint": "High entry friction in subsequent algorithmic and search courses. Faculty will face 25-35% failure rates on initial lab assignments without prior familiarity with Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)."
+      },
+      "overlaps": [
+        {
+          "courseCode": "CSE 301",
+          "courseName": "Algorithms",
+          "topicName": "Advanced Graph Algorithms",
+          "overlapType": "CURRICULAR_PROGRESSION",
+          "note": "Currently, CSE 301 assumes CSE 207 covered basic BFS/DFS. Removing it creates an unbridgeable conceptual canyon."
+        }
+      ],
+      "rippleEffect": [
+        {
+          "nodeId": "CSE-207",
+          "name": "CSE 207: Data Structures",
+          "level": "SOURCE_CHANGE",
+          "color": "crimson",
+          "impactScore": 76,
+          "badge": "Proposed Deletion",
+          "role": "Origin Course",
+          "details": "Topic \"Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)\" removed (3.5 weeks lost)"
+        },
+        {
+          "nodeId": "CSE-301",
+          "name": "CSE 301: Algorithms",
+          "level": "HIGH",
+          "color": "crimson",
+          "impactScore": 85,
+          "badge": "HIGH Impact (Distance: 1)",
+          "role": "Direct Child Prerequisite",
+          "details": "CSE 301 contains topics (Advanced Graph Algorithms (Bellman-Ford, Floyd-Warshall, Max-Flow Ford-Fulkerson), NP-Completeness, Reductions & Approximation) that directly require concepts from \"Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)\"."
+        },
+        {
+          "nodeId": "CSE-305",
+          "name": "CSE 305: Database Systems",
+          "level": "MEDIUM",
+          "color": "amber",
+          "impactScore": 65,
+          "badge": "MEDIUM Impact (Distance: 1)",
+          "role": "Direct Child Prerequisite",
+          "details": "Indirect prerequisite relationship via semester progression sequence."
+        },
+        {
+          "nodeId": "CSE-307",
+          "name": "CSE 307: Operating Systems",
+          "level": "HIGH",
+          "color": "crimson",
+          "impactScore": 85,
+          "badge": "HIGH Impact (Distance: 1)",
+          "role": "Direct Child Prerequisite",
+          "details": "CSE 307 contains topics (Deadlock Detection & Resource Allocation Directed Graphs) that directly require concepts from \"Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)\"."
+        },
+        {
+          "nodeId": "CSE-401",
+          "name": "CSE 401: Artificial Intelligence",
+          "level": "MEDIUM",
+          "color": "amber",
+          "impactScore": 65,
+          "badge": "MEDIUM Impact (Distance: 2)",
+          "role": "Transitive Downstream Course",
+          "details": "CSE 401 contains topics (Heuristic State-Space Search (A*, IDA*, Graph Traversals), Bayesian Reasoning & Directed Acyclic Belief Graphs) that directly require concepts from \"Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)\"."
+        },
+        {
+          "nodeId": "CSE-405",
+          "name": "CSE 405: Machine Learning",
+          "level": "MEDIUM",
+          "color": "amber",
+          "impactScore": 65,
+          "badge": "MEDIUM Impact (Distance: 2)",
+          "role": "Transitive Downstream Course",
+          "details": "CSE 405 contains topics (Graph Neural Networks & Node Embedding Representations) that directly require concepts from \"Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)\"."
+        }
+      ],
+      "evidenceItems": [
+        {
+          "id": "ev-prereq",
+          "dimension": "Prerequisite Risk",
+          "evidenceType": "VERIFIED_STRUCTURAL_RELATION",
+          "title": "Prerequisite Disruption for 6 Downstream Topics",
+          "summary": "Removing \"Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)\" breaks the verified curricular dependency chain documented in the Department OBE syllabus.",
+          "paths": [
+            {
+              "fromCourse": "CSE 207 (Data Structures)",
+              "fromTopic": "Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)",
+              "relation": "IS_FOUNDATIONAL_PREREQUISITE_FOR",
+              "toCourse": "CSE 301 (Algorithms)",
+              "toTopic": "Advanced Graph Algorithms (Bellman-Ford, Floyd-Warshall, Max-Flow Ford-Fulkerson)",
+              "academicReason": "CSE 301 syllabus assumes prior mastery of fundamental concepts from \"Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)\"."
+            },
+            {
+              "fromCourse": "CSE 207 (Data Structures)",
+              "fromTopic": "Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)",
+              "relation": "IS_FOUNDATIONAL_PREREQUISITE_FOR",
+              "toCourse": "CSE 401 (Artificial Intelligence)",
+              "toTopic": "Heuristic State-Space Search (A*, IDA*, Graph Traversals)",
+              "academicReason": "CSE 401 syllabus assumes prior mastery of fundamental concepts from \"Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)\"."
+            },
+            {
+              "fromCourse": "CSE 207 (Data Structures)",
+              "fromTopic": "Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)",
+              "relation": "IS_FOUNDATIONAL_PREREQUISITE_FOR",
+              "toCourse": "CSE 307 (Operating Systems)",
+              "toTopic": "Deadlock Detection & Resource Allocation Directed Graphs",
+              "academicReason": "CSE 307 syllabus assumes prior mastery of fundamental concepts from \"Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)\"."
+            },
+            {
+              "fromCourse": "CSE 207 (Data Structures)",
+              "fromTopic": "Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)",
+              "relation": "IS_FOUNDATIONAL_PREREQUISITE_FOR",
+              "toCourse": "CSE 405 (Machine Learning)",
+              "toTopic": "Graph Neural Networks & Node Embedding Representations",
+              "academicReason": "CSE 405 syllabus assumes prior mastery of fundamental concepts from \"Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)\"."
+            },
+            {
+              "fromCourse": "CSE 207 (Data Structures)",
+              "fromTopic": "Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)",
+              "relation": "IS_FOUNDATIONAL_PREREQUISITE_FOR",
+              "toCourse": "CSE 401 (Artificial Intelligence)",
+              "toTopic": "Bayesian Reasoning & Directed Acyclic Belief Graphs",
+              "academicReason": "CSE 401 syllabus assumes prior mastery of fundamental concepts from \"Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)\"."
+            },
+            {
+              "fromCourse": "CSE 207 (Data Structures)",
+              "fromTopic": "Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)",
+              "relation": "IS_FOUNDATIONAL_PREREQUISITE_FOR",
+              "toCourse": "CSE 301 (Algorithms)",
+              "toTopic": "NP-Completeness, Reductions & Approximation",
+              "academicReason": "CSE 301 syllabus assumes prior mastery of fundamental concepts from \"Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)\"."
+            }
+          ],
+          "graphChain": [
+            "CSE 207: Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)",
+            "CSE 301: Advanced Graph Algorithms (Bellman-Ford, Floyd-Warshall, Max-Flow Ford-Fulkerson)",
+            "CSE 401: Heuristic State-Space Search (A*, IDA*, Graph Traversals)",
+            "CSE 307: Deadlock Detection & Resource Allocation Directed Graphs",
+            "CSE 405: Graph Neural Networks & Node Embedding Representations",
+            "CSE 401: Bayesian Reasoning & Directed Acyclic Belief Graphs",
+            "CSE 301: NP-Completeness, Reductions & Approximation"
+          ],
+          "academicStandardReference": "OBE Accreditation Standard 3: Articulation of Prerequisite Sequences (IEEE/ACM CS Curricula 2023)."
+        },
+        {
+          "id": "ev-clo",
+          "dimension": "CLO Impact",
+          "evidenceType": "VERIFIED_STRUCTURAL_RELATION",
+          "title": "Direct Contributor to CSE207-CLO3 (Create)",
+          "summary": "Topic \"Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)\" accounts for substantial instruction towards \"Design efficient recursive, tree, and graph algorithms for network traversals, shortest paths, and search spaces.\".",
+          "paths": [
+            {
+              "fromCourse": "CSE 207",
+              "fromTopic": "Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)",
+              "relation": "DIRECTLY_ASSESSES_CLO",
+              "toCourse": "CSE 207",
+              "toTopic": "CSE207-CLO3",
+              "academicReason": "This topic provides 3.5 weeks of dedicated instructional contact time for CSE207-CLO3."
+            }
+          ],
+          "graphChain": [
+            "CSE 207 ➔ Topic: Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST) (3.5 wks)",
+            "CSE207-CLO3 [Create Level] ➔ Target Competency Achieved: 35%"
+          ],
+          "academicStandardReference": "ABET Criterion 3: Student Outcomes Assessment & Program Educational Objectives."
+        },
+        {
+          "id": "ev-readiness",
+          "dimension": "Student Readiness",
+          "evidenceType": "CURRICULUM_MODELING_INFERENCE",
+          "title": "Cohort Transition Gap in CSE 301",
+          "summary": "Faculty teaching CSE 301 will need to spend 2-3 weeks of remedial review if students arrive without foundational \"Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)\" training.",
+          "paths": [
+            {
+              "fromCourse": "CSE 207 (Sem 3)",
+              "fromTopic": "Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)",
+              "relation": "FEEDS_STUDENT_COHORT_INTO",
+              "toCourse": "CSE 301 (Sem 4)",
+              "toTopic": "Course Entry Readiness",
+              "academicReason": "Expected entry competency requires implementation proficiency in Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)."
+            }
+          ],
+          "graphChain": [
+            "Semester 3: CSE 207 (Topic: Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST))",
+            "Semester Break / Cohort Advancement",
+            "Semester 4: CSE 301 (Advanced Topics)"
+          ],
+          "academicStandardReference": "Faculty Senate Academic Policy on Prerequisite Knowledge Transfer."
+        }
+      ],
+      "executiveSummary": {
+        "headline": "High-Risk Curriculum Modification: Removing \"Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)\" triggers cascade across 5 subsequent courses.",
+        "overallAssessment": "The proposed deletion of \"Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)\" from CSE 207 carries an overall modeled impact score of 76/100 (HIGH RISK). While it relieves 3.5 weeks of course density, it destabilizes prerequisite readiness for CSE 301 (Algorithms) and CSE 401 (Artificial Intelligence).",
+        "keyRisks": [
+          "CLO Coverage Reduction: CSE207-CLO3 drops by 23% (85% ➔ 62%).",
+          "Prerequisite Invalidation: 6 downstream topics lose required conceptual foundations.",
+          "Downstream Cascade: Direct child course CSE 301 (Algorithms) suffers critical instructional disruption.",
+          "Critical Knowledge Gap: Standard OBE competencies in graph representations and search spaces omitted."
+        ],
+        "recommendedAction": "Adopt Plan C (Relocate topic to CSE 301 Algorithms) or Plan B (Retain 1.5-week core subset) to maintain accreditation integrity."
+      },
+      "alternatives": [
+        {
+          "id": "plan-a",
+          "name": "Plan A: Proposed Full Removal",
+          "tag": "Proposed Action",
+          "description": "Permanently delete \"Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)\" from CSE 207.",
+          "overallImpact": 76,
+          "riskLevel": "HIGH",
+          "riskColor": "crimson",
+          "cloImpact": "High (Severe coverage drop)",
+          "prerequisiteRisk": "High (Multiple downstream topics broken)",
+          "downstreamRisk": "High (Algorithms & AI affected)",
+          "curriculumGap": "High (Critical traversal concepts untaught)",
+          "assessmentRisk": "Medium (Marks shifted to other topics)",
+          "studentReadiness": "High (Incoming cohort lacking fundamentals)",
+          "pros": [
+            "Frees up 3.5 weeks in CSE 207 for existing topics.",
+            "Reduces initial student cognitive overload in early semester."
+          ],
+          "cons": [
+            "Creates severe downstream knowledge gaps in Algorithms and AI.",
+            "Breaks CLO-3 accreditation alignment.",
+            "Faculty in downstream courses will need to teach prerequisite concepts from scratch."
+          ],
+          "recommendationRationale": "Not recommended as-is due to high cascade risk across 3 subsequent semesters."
+        },
+        {
+          "id": "plan-b",
+          "name": "Plan B: Scope Reduction (Essential Subset)",
+          "tag": "Recommended Compromise",
+          "description": "Retain core concepts of \"Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)\" (BFS/DFS, Representations) but reduce instructional time from 3.5 weeks to 1.5 weeks. Omit advanced topics like Minimum Spanning Trees and Bellman-Ford.",
+          "overallImpact": 42,
+          "riskLevel": "MEDIUM",
+          "riskColor": "amber",
+          "cloImpact": "Medium (Essential concepts preserved)",
+          "prerequisiteRisk": "Medium (Basic traversal preserved; advanced topics deferred)",
+          "downstreamRisk": "Medium (Algorithms can build on basic BFS/DFS)",
+          "curriculumGap": "Low (Core foundations intact)",
+          "assessmentRisk": "Low (Minor re-weighting)",
+          "studentReadiness": "Medium (Students know basic data structures)",
+          "pros": [
+            "Frees 2.0 weeks of instructional time in CSE 207.",
+            "Preserves prerequisite readiness for CSE 301 Algorithms.",
+            "Students maintain exposure to fundamental graph search algorithms."
+          ],
+          "cons": [
+            "Leaves less time for hands-on programming projects on graphs.",
+            "Slightly compresses coverage of Dijkstra's algorithm."
+          ],
+          "recommendationRationale": "Provides a balanced compromise: reduces syllabus congestion while preserving necessary prerequisite readiness."
+        },
+        {
+          "id": "plan-c",
+          "name": "Plan C: Curricular Relocation (Move to Algorithms)",
+          "tag": "Lowest Modeled Impact",
+          "isSafest": true,
+          "description": "Move the in-depth treatment of \"Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)\" to CSE 301 (Algorithms), while keeping only a 1-week conceptual overview in CSE 207. Formally update the CSE 301 course syllabus and credits accordingly.",
+          "overallImpact": 26,
+          "riskLevel": "LOW",
+          "riskColor": "emerald",
+          "cloImpact": "Low (CLO re-allocated to CSE 301)",
+          "prerequisiteRisk": "Low (Taught at the immediate point of need in Algorithms)",
+          "downstreamRisk": "Low (Algorithms syllabus absorbs and structures the topic)",
+          "curriculumGap": "Low (Zero net loss in curriculum-wide knowledge)",
+          "assessmentRisk": "Low (Harmonized across semesters)",
+          "studentReadiness": "Low (Continuously reinforced in algorithmic context)",
+          "pros": [
+            "Zero total knowledge loss across the degree program.",
+            "Allows Graph Algorithms to be taught with greater mathematical maturity in Semester 4.",
+            "Eliminates conceptual redundancy between Data Structures and Algorithms."
+          ],
+          "cons": [
+            "Requires coordinated syllabus approval across two faculty instructors.",
+            "CSE 301 syllabus will need 2 additional weeks of instructional time."
+          ],
+          "recommendationRationale": "Model indicates lowest structural risk (26/100). Foundational concepts remain in the degree program without breaking downstream courses."
+        }
+      ],
+      "aiEnrichment": {
+        "isAiEnriched": false,
+        "engineMode": "LOCAL_DETERMINISTIC_ENGINE",
+        "engineBadge": "Local Academic Simulation Engine (Deterministic)",
+        "aiNotes": "Running in zero-latency deterministic academic modeling mode. Graph analysis, CLO mappings, and scores are mathematically verified."
+      },
+      "facultyControl": {
+        "status": "PENDING_FACULTY_DECISION",
+        "availableActions": [
+          "ACCEPT_PROPOSAL",
+          "MODIFY_PROPOSAL",
+          "REJECT_PROPOSAL",
+          "SEND_FOR_COMMITTEE_REVIEW"
+        ],
+        "notes": ""
+      }
+    }
+  },
+  {
+    "simulationId": "sim-1788670629399-6dskn",
+    "timestamp": "2026-09-06T04:57:09.399Z",
+    "course": {
+      "id": "CSE-207",
+      "code": "CSE 207",
+      "name": "Data Structures",
+      "semester": 3,
+      "credit": 3
+    },
+    "action": "REMOVE_TOPIC",
+    "targetTopic": {
+      "id": "DS-6",
+      "name": "Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)",
+      "weeks": 3.5
+    },
+    "overallScore": 76,
+    "riskLevel": "HIGH",
+    "riskColor": "crimson",
+    "confidence": 98,
+    "facultyDecision": "PENDING_FACULTY_DECISION",
+    "facultyNotes": "",
+    "summary": "High-Risk Curriculum Modification: Removing \"Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)\" triggers cascade across 5 subsequent courses.",
+    "fullData": {
+      "simulationId": "sim-1788670629399-6dskn",
+      "timestamp": "2026-09-06T04:57:09.399Z",
+      "university": {
+        "name": "Ahsanullah University of Science and Technology",
+        "shortName": "AUST",
+        "department": "Department of Computer Science and Engineering",
+        "program": "Bachelor of Science in Computer Science and Engineering",
+        "degree": "BSc in CSE",
+        "curriculumVersion": "2025-2026 Outcome-Based Education (OBE) Standard",
+        "totalCredits": 160,
+        "passingGrade": 2
+      },
+      "course": {
+        "id": "CSE-207",
+        "code": "CSE 207",
+        "name": "Data Structures",
+        "semester": 3,
+        "credit": 3
+      },
+      "action": "REMOVE_TOPIC",
+      "targetTopic": {
+        "id": "DS-6",
+        "name": "Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)",
+        "weeks": 3.5
+      },
+      "facultyReason": "Curriculum optimization",
+      "confidence": 98,
+      "beforeState": {
+        "totalTopics": 8,
+        "totalWeeks": 16,
+        "targetTopicWeeks": 3.5,
+        "cloCoverage": "85% on CSE207-CLO3",
+        "theoryPracticalRatio": "65% Theory / 35% Practical"
+      },
+      "afterState": {
+        "totalTopics": 7,
+        "totalWeeks": 12.5,
+        "targetTopicWeeks": 0,
+        "cloCoverage": "62% on CSE207-CLO3 (Δ -23%)",
+        "theoryPracticalRatio": "75% Theory / 25% Practical"
+      },
+      "overallScore": 76,
+      "riskLevel": "HIGH",
+      "riskColor": "crimson",
+      "riskLabel": "High Risk / Critical Curriculum Disruption",
+      "breakdown": [
+        {
+          "name": "CLO Impact",
+          "score": 72,
+          "weight": "30%",
+          "weightedContribution": 21.6,
+          "description": "Measures loss or degradation in mapped Course Learning Outcomes."
+        },
+        {
+          "name": "Prerequisite Risk",
+          "score": 85,
+          "weight": "25%",
+          "weightedContribution": 21.3,
+          "description": "Evaluates broken foundational readiness for directly dependent courses."
+        },
+        {
+          "name": "Downstream Course Impact",
+          "score": 80,
+          "weight": "20%",
+          "weightedContribution": 16,
+          "description": "Measures transitive ripple effects through the university curriculum graph."
+        },
+        {
+          "name": "Curriculum Gap Detection",
+          "score": 90,
+          "weight": "10%",
+          "weightedContribution": 9,
+          "description": "Identifies core academic competencies left completely untaught."
+        },
+        {
+          "name": "Assessment Balance Impact",
+          "score": 61,
+          "weight": "10%",
+          "weightedContribution": 6.1,
+          "description": "Detects shifts between theoretical rigor and practical laboratory hours."
+        },
+        {
+          "name": "Course Overlap & Placement",
+          "score": 45,
+          "weight": "5%",
+          "weightedContribution": 2.3,
+          "description": "Analyzes redundant duplication or misplaced topics across academic semesters."
+        }
+      ],
+      "formula": "Overall = (CLO × 0.30) + (Prereq × 0.25) + (Downstream × 0.20) + (Gap × 0.10) + (Assessment × 0.10) + (Overlap × 0.05)",
+      "cloImpact": [
+        {
+          "cloId": "CSE207-CLO1",
+          "description": "Analyze asymptotic computational time and space bounds for operations on diverse data structures.",
+          "bloomLevel": "Analyze",
+          "beforeCoverage": 82,
+          "afterCoverage": 82,
+          "delta": 0,
+          "severity": "LOW",
+          "explanation": "Unaffected by this specific topic modification."
+        },
+        {
+          "cloId": "CSE207-CLO2",
+          "description": "Implement fundamental linear data structures (arrays, linked lists, stacks, queues) to solve real-world processing bottlenecks.",
+          "bloomLevel": "Apply",
+          "beforeCoverage": 82,
+          "afterCoverage": 82,
+          "delta": 0,
+          "severity": "LOW",
+          "explanation": "Unaffected by this specific topic modification."
+        },
+        {
+          "cloId": "CSE207-CLO3",
+          "description": "Design efficient recursive, tree, and graph algorithms for network traversals, shortest paths, and search spaces.",
+          "bloomLevel": "Create",
+          "beforeCoverage": 85,
+          "afterCoverage": 62,
+          "delta": -23,
+          "severity": "HIGH",
+          "explanation": "Coverage for CSE207-CLO3 drops by 23% (85% ➔ 62%) due to removal of dedicated instruction on \"Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)\"."
+        },
+        {
+          "cloId": "CSE207-CLO4",
+          "description": "Evaluate trade-offs between memory footprint and access speed in hashing and balanced search trees.",
+          "bloomLevel": "Evaluate",
+          "beforeCoverage": 82,
+          "afterCoverage": 82,
+          "delta": 0,
+          "severity": "LOW",
+          "explanation": "Unaffected by this specific topic modification."
+        }
+      ],
+      "prerequisiteImpact": {
+        "score": 85,
+        "riskLevel": "HIGH",
+        "brokenDependenciesCount": 6,
+        "brokenTopics": [
+          "CSE 301: Advanced Graph Algorithms (Bellman-Ford, Floyd-Warshall, Max-Flow Ford-Fulkerson)",
+          "CSE 401: Heuristic State-Space Search (A*, IDA*, Graph Traversals)",
+          "CSE 307: Deadlock Detection & Resource Allocation Directed Graphs",
+          "CSE 405: Graph Neural Networks & Node Embedding Representations",
+          "CSE 401: Bayesian Reasoning & Directed Acyclic Belief Graphs",
+          "CSE 301: NP-Completeness, Reductions & Approximation"
+        ],
+        "summary": "Foundational knowledge gap: 6 downstream topics explicitly depend on \"Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)\"."
+      },
+      "downstreamImpact": [
+        {
+          "courseId": "CSE-301",
+          "courseCode": "CSE 301",
+          "courseName": "Algorithms",
+          "semester": 4,
+          "distance": 1,
+          "impactScore": 85,
+          "riskLevel": "HIGH",
+          "affectedTopics": [
+            "Advanced Graph Algorithms (Bellman-Ford, Floyd-Warshall, Max-Flow Ford-Fulkerson)",
+            "NP-Completeness, Reductions & Approximation"
+          ],
+          "reason": "CSE 301 contains topics (Advanced Graph Algorithms (Bellman-Ford, Floyd-Warshall, Max-Flow Ford-Fulkerson), NP-Completeness, Reductions & Approximation) that directly require concepts from \"Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)\"."
+        },
+        {
+          "courseId": "CSE-305",
+          "courseCode": "CSE 305",
+          "courseName": "Database Systems",
+          "semester": 4,
+          "distance": 1,
+          "impactScore": 65,
+          "riskLevel": "MEDIUM",
+          "affectedTopics": [],
+          "reason": "Indirect prerequisite relationship via semester progression sequence."
+        },
+        {
+          "courseId": "CSE-307",
+          "courseCode": "CSE 307",
+          "courseName": "Operating Systems",
+          "semester": 5,
+          "distance": 1,
+          "impactScore": 85,
+          "riskLevel": "HIGH",
+          "affectedTopics": [
+            "Deadlock Detection & Resource Allocation Directed Graphs"
+          ],
+          "reason": "CSE 307 contains topics (Deadlock Detection & Resource Allocation Directed Graphs) that directly require concepts from \"Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)\"."
+        },
+        {
+          "courseId": "CSE-401",
+          "courseCode": "CSE 401",
+          "courseName": "Artificial Intelligence",
+          "semester": 6,
+          "distance": 2,
+          "impactScore": 65,
+          "riskLevel": "MEDIUM",
+          "affectedTopics": [
+            "Heuristic State-Space Search (A*, IDA*, Graph Traversals)",
+            "Bayesian Reasoning & Directed Acyclic Belief Graphs"
+          ],
+          "reason": "CSE 401 contains topics (Heuristic State-Space Search (A*, IDA*, Graph Traversals), Bayesian Reasoning & Directed Acyclic Belief Graphs) that directly require concepts from \"Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)\"."
+        },
+        {
+          "courseId": "CSE-405",
+          "courseCode": "CSE 405",
+          "courseName": "Machine Learning",
+          "semester": 7,
+          "distance": 2,
+          "impactScore": 65,
+          "riskLevel": "MEDIUM",
+          "affectedTopics": [
+            "Graph Neural Networks & Node Embedding Representations"
+          ],
+          "reason": "CSE 405 contains topics (Graph Neural Networks & Node Embedding Representations) that directly require concepts from \"Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)\"."
+        }
+      ],
+      "assessmentImpact": {
+        "score": 61,
+        "riskLevel": "MEDIUM",
+        "currentTheory": 65,
+        "currentPractical": 35,
+        "predictedTheory": 75,
+        "predictedPractical": 25,
+        "explanation": "Removing practical algorithmic implementations from \"Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)\" creates a 10% skew toward passive theoretical examinations."
+      },
+      "curriculumGaps": [
+        {
+          "severity": "CRITICAL",
+          "concept": "Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST) Core Fundamentals",
+          "description": "Students will graduate without structured academic coursework in Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST) representations and traversal algorithms.",
+          "suggestedRemedy": "Transfer foundational Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST) into CSE 301 (Algorithms) before eliminating from CSE 207."
+        }
+      ],
+      "studentReadiness": {
+        "score": 75,
+        "riskLevel": "HIGH",
+        "targetCohort": "Students advancing from Semester 3 to Semester 4",
+        "frictionPoint": "High entry friction in subsequent algorithmic and search courses. Faculty will face 25-35% failure rates on initial lab assignments without prior familiarity with Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)."
+      },
+      "overlaps": [
+        {
+          "courseCode": "CSE 301",
+          "courseName": "Algorithms",
+          "topicName": "Advanced Graph Algorithms",
+          "overlapType": "CURRICULAR_PROGRESSION",
+          "note": "Currently, CSE 301 assumes CSE 207 covered basic BFS/DFS. Removing it creates an unbridgeable conceptual canyon."
+        }
+      ],
+      "rippleEffect": [
+        {
+          "nodeId": "CSE-207",
+          "name": "CSE 207: Data Structures",
+          "level": "SOURCE_CHANGE",
+          "color": "crimson",
+          "impactScore": 76,
+          "badge": "Proposed Deletion",
+          "role": "Origin Course",
+          "details": "Topic \"Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)\" removed (3.5 weeks lost)"
+        },
+        {
+          "nodeId": "CSE-301",
+          "name": "CSE 301: Algorithms",
+          "level": "HIGH",
+          "color": "crimson",
+          "impactScore": 85,
+          "badge": "HIGH Impact (Distance: 1)",
+          "role": "Direct Child Prerequisite",
+          "details": "CSE 301 contains topics (Advanced Graph Algorithms (Bellman-Ford, Floyd-Warshall, Max-Flow Ford-Fulkerson), NP-Completeness, Reductions & Approximation) that directly require concepts from \"Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)\"."
+        },
+        {
+          "nodeId": "CSE-305",
+          "name": "CSE 305: Database Systems",
+          "level": "MEDIUM",
+          "color": "amber",
+          "impactScore": 65,
+          "badge": "MEDIUM Impact (Distance: 1)",
+          "role": "Direct Child Prerequisite",
+          "details": "Indirect prerequisite relationship via semester progression sequence."
+        },
+        {
+          "nodeId": "CSE-307",
+          "name": "CSE 307: Operating Systems",
+          "level": "HIGH",
+          "color": "crimson",
+          "impactScore": 85,
+          "badge": "HIGH Impact (Distance: 1)",
+          "role": "Direct Child Prerequisite",
+          "details": "CSE 307 contains topics (Deadlock Detection & Resource Allocation Directed Graphs) that directly require concepts from \"Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)\"."
+        },
+        {
+          "nodeId": "CSE-401",
+          "name": "CSE 401: Artificial Intelligence",
+          "level": "MEDIUM",
+          "color": "amber",
+          "impactScore": 65,
+          "badge": "MEDIUM Impact (Distance: 2)",
+          "role": "Transitive Downstream Course",
+          "details": "CSE 401 contains topics (Heuristic State-Space Search (A*, IDA*, Graph Traversals), Bayesian Reasoning & Directed Acyclic Belief Graphs) that directly require concepts from \"Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)\"."
+        },
+        {
+          "nodeId": "CSE-405",
+          "name": "CSE 405: Machine Learning",
+          "level": "MEDIUM",
+          "color": "amber",
+          "impactScore": 65,
+          "badge": "MEDIUM Impact (Distance: 2)",
+          "role": "Transitive Downstream Course",
+          "details": "CSE 405 contains topics (Graph Neural Networks & Node Embedding Representations) that directly require concepts from \"Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)\"."
+        }
+      ],
+      "evidenceItems": [
+        {
+          "id": "ev-prereq",
+          "dimension": "Prerequisite Risk",
+          "evidenceType": "VERIFIED_STRUCTURAL_RELATION",
+          "title": "Prerequisite Disruption for 6 Downstream Topics",
+          "summary": "Removing \"Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)\" breaks the verified curricular dependency chain documented in the Department OBE syllabus.",
+          "paths": [
+            {
+              "fromCourse": "CSE 207 (Data Structures)",
+              "fromTopic": "Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)",
+              "relation": "IS_FOUNDATIONAL_PREREQUISITE_FOR",
+              "toCourse": "CSE 301 (Algorithms)",
+              "toTopic": "Advanced Graph Algorithms (Bellman-Ford, Floyd-Warshall, Max-Flow Ford-Fulkerson)",
+              "academicReason": "CSE 301 syllabus assumes prior mastery of fundamental concepts from \"Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)\"."
+            },
+            {
+              "fromCourse": "CSE 207 (Data Structures)",
+              "fromTopic": "Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)",
+              "relation": "IS_FOUNDATIONAL_PREREQUISITE_FOR",
+              "toCourse": "CSE 401 (Artificial Intelligence)",
+              "toTopic": "Heuristic State-Space Search (A*, IDA*, Graph Traversals)",
+              "academicReason": "CSE 401 syllabus assumes prior mastery of fundamental concepts from \"Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)\"."
+            },
+            {
+              "fromCourse": "CSE 207 (Data Structures)",
+              "fromTopic": "Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)",
+              "relation": "IS_FOUNDATIONAL_PREREQUISITE_FOR",
+              "toCourse": "CSE 307 (Operating Systems)",
+              "toTopic": "Deadlock Detection & Resource Allocation Directed Graphs",
+              "academicReason": "CSE 307 syllabus assumes prior mastery of fundamental concepts from \"Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)\"."
+            },
+            {
+              "fromCourse": "CSE 207 (Data Structures)",
+              "fromTopic": "Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)",
+              "relation": "IS_FOUNDATIONAL_PREREQUISITE_FOR",
+              "toCourse": "CSE 405 (Machine Learning)",
+              "toTopic": "Graph Neural Networks & Node Embedding Representations",
+              "academicReason": "CSE 405 syllabus assumes prior mastery of fundamental concepts from \"Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)\"."
+            },
+            {
+              "fromCourse": "CSE 207 (Data Structures)",
+              "fromTopic": "Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)",
+              "relation": "IS_FOUNDATIONAL_PREREQUISITE_FOR",
+              "toCourse": "CSE 401 (Artificial Intelligence)",
+              "toTopic": "Bayesian Reasoning & Directed Acyclic Belief Graphs",
+              "academicReason": "CSE 401 syllabus assumes prior mastery of fundamental concepts from \"Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)\"."
+            },
+            {
+              "fromCourse": "CSE 207 (Data Structures)",
+              "fromTopic": "Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)",
+              "relation": "IS_FOUNDATIONAL_PREREQUISITE_FOR",
+              "toCourse": "CSE 301 (Algorithms)",
+              "toTopic": "NP-Completeness, Reductions & Approximation",
+              "academicReason": "CSE 301 syllabus assumes prior mastery of fundamental concepts from \"Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)\"."
+            }
+          ],
+          "graphChain": [
+            "CSE 207: Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)",
+            "CSE 301: Advanced Graph Algorithms (Bellman-Ford, Floyd-Warshall, Max-Flow Ford-Fulkerson)",
+            "CSE 401: Heuristic State-Space Search (A*, IDA*, Graph Traversals)",
+            "CSE 307: Deadlock Detection & Resource Allocation Directed Graphs",
+            "CSE 405: Graph Neural Networks & Node Embedding Representations",
+            "CSE 401: Bayesian Reasoning & Directed Acyclic Belief Graphs",
+            "CSE 301: NP-Completeness, Reductions & Approximation"
+          ],
+          "academicStandardReference": "OBE Accreditation Standard 3: Articulation of Prerequisite Sequences (IEEE/ACM CS Curricula 2023)."
+        },
+        {
+          "id": "ev-clo",
+          "dimension": "CLO Impact",
+          "evidenceType": "VERIFIED_STRUCTURAL_RELATION",
+          "title": "Direct Contributor to CSE207-CLO3 (Create)",
+          "summary": "Topic \"Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)\" accounts for substantial instruction towards \"Design efficient recursive, tree, and graph algorithms for network traversals, shortest paths, and search spaces.\".",
+          "paths": [
+            {
+              "fromCourse": "CSE 207",
+              "fromTopic": "Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)",
+              "relation": "DIRECTLY_ASSESSES_CLO",
+              "toCourse": "CSE 207",
+              "toTopic": "CSE207-CLO3",
+              "academicReason": "This topic provides 3.5 weeks of dedicated instructional contact time for CSE207-CLO3."
+            }
+          ],
+          "graphChain": [
+            "CSE 207 ➔ Topic: Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST) (3.5 wks)",
+            "CSE207-CLO3 [Create Level] ➔ Target Competency Achieved: 35%"
+          ],
+          "academicStandardReference": "ABET Criterion 3: Student Outcomes Assessment & Program Educational Objectives."
+        },
+        {
+          "id": "ev-readiness",
+          "dimension": "Student Readiness",
+          "evidenceType": "CURRICULUM_MODELING_INFERENCE",
+          "title": "Cohort Transition Gap in CSE 301",
+          "summary": "Faculty teaching CSE 301 will need to spend 2-3 weeks of remedial review if students arrive without foundational \"Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)\" training.",
+          "paths": [
+            {
+              "fromCourse": "CSE 207 (Sem 3)",
+              "fromTopic": "Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)",
+              "relation": "FEEDS_STUDENT_COHORT_INTO",
+              "toCourse": "CSE 301 (Sem 4)",
+              "toTopic": "Course Entry Readiness",
+              "academicReason": "Expected entry competency requires implementation proficiency in Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)."
+            }
+          ],
+          "graphChain": [
+            "Semester 3: CSE 207 (Topic: Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST))",
+            "Semester Break / Cohort Advancement",
+            "Semester 4: CSE 301 (Advanced Topics)"
+          ],
+          "academicStandardReference": "Faculty Senate Academic Policy on Prerequisite Knowledge Transfer."
+        }
+      ],
+      "executiveSummary": {
+        "headline": "High-Risk Curriculum Modification: Removing \"Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)\" triggers cascade across 5 subsequent courses.",
+        "overallAssessment": "The proposed deletion of \"Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)\" from CSE 207 carries an overall modeled impact score of 76/100 (HIGH RISK). While it relieves 3.5 weeks of course density, it destabilizes prerequisite readiness for CSE 301 (Algorithms) and CSE 401 (Artificial Intelligence).",
+        "keyRisks": [
+          "CLO Coverage Reduction: CSE207-CLO3 drops by 23% (85% ➔ 62%).",
+          "Prerequisite Invalidation: 6 downstream topics lose required conceptual foundations.",
+          "Downstream Cascade: Direct child course CSE 301 (Algorithms) suffers critical instructional disruption.",
+          "Critical Knowledge Gap: Standard OBE competencies in graph representations and search spaces omitted."
+        ],
+        "recommendedAction": "Adopt Plan C (Relocate topic to CSE 301 Algorithms) or Plan B (Retain 1.5-week core subset) to maintain accreditation integrity."
+      },
+      "alternatives": [
+        {
+          "id": "plan-a",
+          "name": "Plan A: Proposed Full Removal",
+          "tag": "Proposed Action",
+          "description": "Permanently delete \"Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)\" from CSE 207.",
+          "overallImpact": 76,
+          "riskLevel": "HIGH",
+          "riskColor": "crimson",
+          "cloImpact": "High (Severe coverage drop)",
+          "prerequisiteRisk": "High (Multiple downstream topics broken)",
+          "downstreamRisk": "High (Algorithms & AI affected)",
+          "curriculumGap": "High (Critical traversal concepts untaught)",
+          "assessmentRisk": "Medium (Marks shifted to other topics)",
+          "studentReadiness": "High (Incoming cohort lacking fundamentals)",
+          "pros": [
+            "Frees up 3.5 weeks in CSE 207 for existing topics.",
+            "Reduces initial student cognitive overload in early semester."
+          ],
+          "cons": [
+            "Creates severe downstream knowledge gaps in Algorithms and AI.",
+            "Breaks CLO-3 accreditation alignment.",
+            "Faculty in downstream courses will need to teach prerequisite concepts from scratch."
+          ],
+          "recommendationRationale": "Not recommended as-is due to high cascade risk across 3 subsequent semesters."
+        },
+        {
+          "id": "plan-b",
+          "name": "Plan B: Scope Reduction (Essential Subset)",
+          "tag": "Recommended Compromise",
+          "description": "Retain core concepts of \"Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)\" (BFS/DFS, Representations) but reduce instructional time from 3.5 weeks to 1.5 weeks. Omit advanced topics like Minimum Spanning Trees and Bellman-Ford.",
+          "overallImpact": 42,
+          "riskLevel": "MEDIUM",
+          "riskColor": "amber",
+          "cloImpact": "Medium (Essential concepts preserved)",
+          "prerequisiteRisk": "Medium (Basic traversal preserved; advanced topics deferred)",
+          "downstreamRisk": "Medium (Algorithms can build on basic BFS/DFS)",
+          "curriculumGap": "Low (Core foundations intact)",
+          "assessmentRisk": "Low (Minor re-weighting)",
+          "studentReadiness": "Medium (Students know basic data structures)",
+          "pros": [
+            "Frees 2.0 weeks of instructional time in CSE 207.",
+            "Preserves prerequisite readiness for CSE 301 Algorithms.",
+            "Students maintain exposure to fundamental graph search algorithms."
+          ],
+          "cons": [
+            "Leaves less time for hands-on programming projects on graphs.",
+            "Slightly compresses coverage of Dijkstra's algorithm."
+          ],
+          "recommendationRationale": "Provides a balanced compromise: reduces syllabus congestion while preserving necessary prerequisite readiness."
+        },
+        {
+          "id": "plan-c",
+          "name": "Plan C: Curricular Relocation (Move to Algorithms)",
+          "tag": "Lowest Modeled Impact",
+          "isSafest": true,
+          "description": "Move the in-depth treatment of \"Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)\" to CSE 301 (Algorithms), while keeping only a 1-week conceptual overview in CSE 207. Formally update the CSE 301 course syllabus and credits accordingly.",
+          "overallImpact": 26,
+          "riskLevel": "LOW",
+          "riskColor": "emerald",
+          "cloImpact": "Low (CLO re-allocated to CSE 301)",
+          "prerequisiteRisk": "Low (Taught at the immediate point of need in Algorithms)",
+          "downstreamRisk": "Low (Algorithms syllabus absorbs and structures the topic)",
+          "curriculumGap": "Low (Zero net loss in curriculum-wide knowledge)",
+          "assessmentRisk": "Low (Harmonized across semesters)",
+          "studentReadiness": "Low (Continuously reinforced in algorithmic context)",
+          "pros": [
+            "Zero total knowledge loss across the degree program.",
+            "Allows Graph Algorithms to be taught with greater mathematical maturity in Semester 4.",
+            "Eliminates conceptual redundancy between Data Structures and Algorithms."
+          ],
+          "cons": [
+            "Requires coordinated syllabus approval across two faculty instructors.",
+            "CSE 301 syllabus will need 2 additional weeks of instructional time."
+          ],
+          "recommendationRationale": "Model indicates lowest structural risk (26/100). Foundational concepts remain in the degree program without breaking downstream courses."
+        }
+      ],
+      "aiEnrichment": {
+        "isAiEnriched": false,
+        "engineMode": "LOCAL_DETERMINISTIC_ENGINE",
+        "engineBadge": "Local Academic Simulation Engine (Deterministic)",
+        "aiNotes": "Running in zero-latency deterministic academic modeling mode. Graph analysis, CLO mappings, and scores are mathematically verified."
+      },
+      "facultyControl": {
+        "status": "PENDING_FACULTY_DECISION",
+        "availableActions": [
+          "ACCEPT_PROPOSAL",
+          "MODIFY_PROPOSAL",
+          "REJECT_PROPOSAL",
+          "SEND_FOR_COMMITTEE_REVIEW"
+        ],
+        "notes": ""
+      }
+    }
+  },
+  {
+    "simulationId": "sim-1788670583118-bm645",
+    "timestamp": "2026-09-06T04:56:23.118Z",
+    "course": {
+      "id": "CSE-207",
+      "code": "CSE 207",
+      "name": "Data Structures",
+      "semester": 3,
+      "credit": 3
+    },
+    "action": "REMOVE_TOPIC",
+    "targetTopic": {
+      "id": "DS-6",
+      "name": "Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)",
+      "weeks": 3.5
+    },
+    "overallScore": 48,
+    "riskLevel": "MEDIUM",
+    "riskColor": "amber",
+    "confidence": 98,
+    "facultyDecision": "PENDING_FACULTY_DECISION",
+    "facultyNotes": "",
+    "summary": "High-Risk Curriculum Modification: Removing \"Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)\" triggers cascade across 5 subsequent courses.",
+    "fullData": {
+      "simulationId": "sim-1788670583118-bm645",
+      "timestamp": "2026-09-06T04:56:23.118Z",
+      "university": {
+        "name": "Ahsanullah University of Science and Technology",
+        "shortName": "AUST",
+        "department": "Department of Computer Science and Engineering",
+        "program": "Bachelor of Science in Computer Science and Engineering",
+        "degree": "BSc in CSE",
+        "curriculumVersion": "2025-2026 Outcome-Based Education (OBE) Standard",
+        "totalCredits": 160,
+        "passingGrade": 2
+      },
+      "course": {
+        "id": "CSE-207",
+        "code": "CSE 207",
+        "name": "Data Structures",
+        "semester": 3,
+        "credit": 3
+      },
+      "action": "REMOVE_TOPIC",
+      "targetTopic": {
+        "id": "DS-6",
+        "name": "Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)",
+        "weeks": 3.5
+      },
+      "facultyReason": "Testing simulation",
+      "confidence": 98,
+      "beforeState": {
+        "totalTopics": 8,
+        "totalWeeks": 16,
+        "targetTopicWeeks": 3.5,
+        "cloCoverage": "100% on CSE207-CLO3",
+        "theoryPracticalRatio": "65% Theory / 35% Practical"
+      },
+      "afterState": {
+        "totalTopics": 7,
+        "totalWeeks": 12.5,
+        "targetTopicWeeks": 0,
+        "cloCoverage": "105% on CSE207-CLO3 (Δ --5%)",
+        "theoryPracticalRatio": "75% Theory / 25% Practical"
+      },
+      "overallScore": 48,
+      "riskLevel": "MEDIUM",
+      "riskColor": "amber",
+      "riskLabel": "Medium Risk / Moderate Impact",
+      "breakdown": [
+        {
+          "name": "CLO Impact",
+          "score": -17.5,
+          "weight": "30%",
+          "weightedContribution": -5.2,
+          "description": "Measures loss or degradation in mapped Course Learning Outcomes."
+        },
+        {
+          "name": "Prerequisite Risk",
+          "score": 88,
+          "weight": "25%",
+          "weightedContribution": 22,
+          "description": "Evaluates broken foundational readiness for directly dependent courses."
+        },
+        {
+          "name": "Downstream Course Impact",
+          "score": 73,
+          "weight": "20%",
+          "weightedContribution": 14.6,
+          "description": "Measures transitive ripple effects through the university curriculum graph."
+        },
+        {
+          "name": "Curriculum Gap Detection",
+          "score": 88,
+          "weight": "10%",
+          "weightedContribution": 8.8,
+          "description": "Identifies core academic competencies left completely untaught."
+        },
+        {
+          "name": "Assessment Balance Impact",
+          "score": 61,
+          "weight": "10%",
+          "weightedContribution": 6.1,
+          "description": "Detects shifts between theoretical rigor and practical laboratory hours."
+        },
+        {
+          "name": "Course Overlap & Placement",
+          "score": 40,
+          "weight": "5%",
+          "weightedContribution": 2,
+          "description": "Analyzes redundant duplication or misplaced topics across academic semesters."
+        }
+      ],
+      "formula": "Overall = (CLO × 0.30) + (Prereq × 0.25) + (Downstream × 0.20) + (Gap × 0.10) + (Assessment × 0.10) + (Overlap × 0.05)",
+      "cloImpact": [
+        {
+          "cloId": "CSE207-CLO1",
+          "description": "Analyze asymptotic computational time and space bounds for operations on diverse data structures.",
+          "bloomLevel": "Analyze",
+          "beforeCoverage": 82,
+          "afterCoverage": 82,
+          "delta": 0,
+          "severity": "LOW",
+          "explanation": "Unaffected by this specific topic modification."
+        },
+        {
+          "cloId": "CSE207-CLO2",
+          "description": "Implement fundamental linear data structures (arrays, linked lists, stacks, queues) to solve real-world processing bottlenecks.",
+          "bloomLevel": "Apply",
+          "beforeCoverage": 82,
+          "afterCoverage": 82,
+          "delta": 0,
+          "severity": "LOW",
+          "explanation": "Unaffected by this specific topic modification."
+        },
+        {
+          "cloId": "CSE207-CLO3",
+          "description": "Design efficient recursive, tree, and graph algorithms for network traversals, shortest paths, and search spaces.",
+          "bloomLevel": "Create",
+          "beforeCoverage": 100,
+          "afterCoverage": 105,
+          "delta": 5,
+          "severity": "MEDIUM",
+          "explanation": "Coverage for CSE207-CLO3 drops by -5% due to removal of dedicated instruction on \"Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)\"."
+        },
+        {
+          "cloId": "CSE207-CLO4",
+          "description": "Evaluate trade-offs between memory footprint and access speed in hashing and balanced search trees.",
+          "bloomLevel": "Evaluate",
+          "beforeCoverage": 82,
+          "afterCoverage": 82,
+          "delta": 0,
+          "severity": "LOW",
+          "explanation": "Unaffected by this specific topic modification."
+        }
+      ],
+      "prerequisiteImpact": {
+        "score": 88,
+        "riskLevel": "HIGH",
+        "brokenDependenciesCount": 6,
+        "brokenTopics": [
+          "CSE 301: Advanced Graph Algorithms (Bellman-Ford, Floyd-Warshall, Max-Flow Ford-Fulkerson)",
+          "CSE 401: Heuristic State-Space Search (A*, IDA*, Graph Traversals)",
+          "CSE 307: Deadlock Detection & Resource Allocation Directed Graphs",
+          "CSE 405: Graph Neural Networks & Node Embedding Representations",
+          "CSE 401: Bayesian Reasoning & Directed Acyclic Belief Graphs",
+          "CSE 301: NP-Completeness, Reductions & Approximation"
+        ],
+        "summary": "Foundational knowledge gap: 6 downstream topics explicitly depend on \"Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)\"."
+      },
+      "downstreamImpact": [
+        {
+          "courseId": "CSE-301",
+          "courseCode": "CSE 301",
+          "courseName": "Algorithms",
+          "semester": 4,
+          "distance": 1,
+          "impactScore": 85,
+          "riskLevel": "HIGH",
+          "affectedTopics": [
+            "Advanced Graph Algorithms (Bellman-Ford, Floyd-Warshall, Max-Flow Ford-Fulkerson)",
+            "NP-Completeness, Reductions & Approximation"
+          ],
+          "reason": "CSE 301 contains topics (Advanced Graph Algorithms (Bellman-Ford, Floyd-Warshall, Max-Flow Ford-Fulkerson), NP-Completeness, Reductions & Approximation) that directly require concepts from \"Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)\"."
+        },
+        {
+          "courseId": "CSE-305",
+          "courseCode": "CSE 305",
+          "courseName": "Database Systems",
+          "semester": 4,
+          "distance": 1,
+          "impactScore": 65,
+          "riskLevel": "MEDIUM",
+          "affectedTopics": [],
+          "reason": "Indirect prerequisite relationship via semester progression sequence."
+        },
+        {
+          "courseId": "CSE-307",
+          "courseCode": "CSE 307",
+          "courseName": "Operating Systems",
+          "semester": 5,
+          "distance": 1,
+          "impactScore": 85,
+          "riskLevel": "HIGH",
+          "affectedTopics": [
+            "Deadlock Detection & Resource Allocation Directed Graphs"
+          ],
+          "reason": "CSE 307 contains topics (Deadlock Detection & Resource Allocation Directed Graphs) that directly require concepts from \"Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)\"."
+        },
+        {
+          "courseId": "CSE-401",
+          "courseCode": "CSE 401",
+          "courseName": "Artificial Intelligence",
+          "semester": 6,
+          "distance": 2,
+          "impactScore": 65,
+          "riskLevel": "MEDIUM",
+          "affectedTopics": [
+            "Heuristic State-Space Search (A*, IDA*, Graph Traversals)",
+            "Bayesian Reasoning & Directed Acyclic Belief Graphs"
+          ],
+          "reason": "CSE 401 contains topics (Heuristic State-Space Search (A*, IDA*, Graph Traversals), Bayesian Reasoning & Directed Acyclic Belief Graphs) that directly require concepts from \"Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)\"."
+        },
+        {
+          "courseId": "CSE-405",
+          "courseCode": "CSE 405",
+          "courseName": "Machine Learning",
+          "semester": 7,
+          "distance": 2,
+          "impactScore": 65,
+          "riskLevel": "MEDIUM",
+          "affectedTopics": [
+            "Graph Neural Networks & Node Embedding Representations"
+          ],
+          "reason": "CSE 405 contains topics (Graph Neural Networks & Node Embedding Representations) that directly require concepts from \"Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)\"."
+        }
+      ],
+      "assessmentImpact": {
+        "score": 62,
+        "riskLevel": "MEDIUM",
+        "currentTheory": 65,
+        "currentPractical": 35,
+        "predictedTheory": 75,
+        "predictedPractical": 25,
+        "explanation": "Removing practical algorithmic implementations from \"Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)\" creates a 10% skew toward passive theoretical examinations."
+      },
+      "curriculumGaps": [
+        {
+          "severity": "CRITICAL",
+          "concept": "Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST) Core Fundamentals",
+          "description": "Students will graduate without structured academic coursework in Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST) representations and traversal algorithms.",
+          "suggestedRemedy": "Transfer foundational Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST) into CSE 301 (Algorithms) before eliminating from CSE 207."
+        }
+      ],
+      "studentReadiness": {
+        "score": 75,
+        "riskLevel": "HIGH",
+        "targetCohort": "Students advancing from Semester 3 to Semester 4",
+        "frictionPoint": "High entry friction in subsequent algorithmic and search courses. Faculty will face 25-35% failure rates on initial lab assignments without prior familiarity with Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)."
+      },
+      "overlaps": [
+        {
+          "courseCode": "CSE 301",
+          "courseName": "Algorithms",
+          "topicName": "Advanced Graph Algorithms",
+          "overlapType": "CURRICULAR_PROGRESSION",
+          "note": "Currently, CSE 301 assumes CSE 207 covered basic BFS/DFS. Removing it creates an unbridgeable conceptual canyon."
+        }
+      ],
+      "rippleEffect": [
+        {
+          "nodeId": "CSE-207",
+          "name": "CSE 207: Data Structures",
+          "level": "SOURCE_CHANGE",
+          "color": "crimson",
+          "impactScore": 48,
+          "badge": "Proposed Deletion",
+          "role": "Origin Course",
+          "details": "Topic \"Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)\" removed (3.5 weeks lost)"
+        },
+        {
+          "nodeId": "CSE-301",
+          "name": "CSE 301: Algorithms",
+          "level": "HIGH",
+          "color": "crimson",
+          "impactScore": 85,
+          "badge": "HIGH Impact (Distance: 1)",
+          "role": "Direct Child Prerequisite",
+          "details": "CSE 301 contains topics (Advanced Graph Algorithms (Bellman-Ford, Floyd-Warshall, Max-Flow Ford-Fulkerson), NP-Completeness, Reductions & Approximation) that directly require concepts from \"Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)\"."
+        },
+        {
+          "nodeId": "CSE-305",
+          "name": "CSE 305: Database Systems",
+          "level": "MEDIUM",
+          "color": "amber",
+          "impactScore": 65,
+          "badge": "MEDIUM Impact (Distance: 1)",
+          "role": "Direct Child Prerequisite",
+          "details": "Indirect prerequisite relationship via semester progression sequence."
+        },
+        {
+          "nodeId": "CSE-307",
+          "name": "CSE 307: Operating Systems",
+          "level": "HIGH",
+          "color": "crimson",
+          "impactScore": 85,
+          "badge": "HIGH Impact (Distance: 1)",
+          "role": "Direct Child Prerequisite",
+          "details": "CSE 307 contains topics (Deadlock Detection & Resource Allocation Directed Graphs) that directly require concepts from \"Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)\"."
+        },
+        {
+          "nodeId": "CSE-401",
+          "name": "CSE 401: Artificial Intelligence",
+          "level": "MEDIUM",
+          "color": "amber",
+          "impactScore": 65,
+          "badge": "MEDIUM Impact (Distance: 2)",
+          "role": "Transitive Downstream Course",
+          "details": "CSE 401 contains topics (Heuristic State-Space Search (A*, IDA*, Graph Traversals), Bayesian Reasoning & Directed Acyclic Belief Graphs) that directly require concepts from \"Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)\"."
+        },
+        {
+          "nodeId": "CSE-405",
+          "name": "CSE 405: Machine Learning",
+          "level": "MEDIUM",
+          "color": "amber",
+          "impactScore": 65,
+          "badge": "MEDIUM Impact (Distance: 2)",
+          "role": "Transitive Downstream Course",
+          "details": "CSE 405 contains topics (Graph Neural Networks & Node Embedding Representations) that directly require concepts from \"Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)\"."
+        }
+      ],
+      "evidenceItems": [
+        {
+          "id": "ev-prereq",
+          "dimension": "Prerequisite Risk",
+          "evidenceType": "VERIFIED_STRUCTURAL_RELATION",
+          "title": "Prerequisite Disruption for 6 Downstream Topics",
+          "summary": "Removing \"Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)\" breaks the verified curricular dependency chain documented in the Department OBE syllabus.",
+          "paths": [
+            {
+              "fromCourse": "CSE 207 (Data Structures)",
+              "fromTopic": "Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)",
+              "relation": "IS_FOUNDATIONAL_PREREQUISITE_FOR",
+              "toCourse": "CSE 301 (Algorithms)",
+              "toTopic": "Advanced Graph Algorithms (Bellman-Ford, Floyd-Warshall, Max-Flow Ford-Fulkerson)",
+              "academicReason": "CSE 301 syllabus assumes prior mastery of fundamental concepts from \"Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)\"."
+            },
+            {
+              "fromCourse": "CSE 207 (Data Structures)",
+              "fromTopic": "Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)",
+              "relation": "IS_FOUNDATIONAL_PREREQUISITE_FOR",
+              "toCourse": "CSE 401 (Artificial Intelligence)",
+              "toTopic": "Heuristic State-Space Search (A*, IDA*, Graph Traversals)",
+              "academicReason": "CSE 401 syllabus assumes prior mastery of fundamental concepts from \"Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)\"."
+            },
+            {
+              "fromCourse": "CSE 207 (Data Structures)",
+              "fromTopic": "Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)",
+              "relation": "IS_FOUNDATIONAL_PREREQUISITE_FOR",
+              "toCourse": "CSE 307 (Operating Systems)",
+              "toTopic": "Deadlock Detection & Resource Allocation Directed Graphs",
+              "academicReason": "CSE 307 syllabus assumes prior mastery of fundamental concepts from \"Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)\"."
+            },
+            {
+              "fromCourse": "CSE 207 (Data Structures)",
+              "fromTopic": "Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)",
+              "relation": "IS_FOUNDATIONAL_PREREQUISITE_FOR",
+              "toCourse": "CSE 405 (Machine Learning)",
+              "toTopic": "Graph Neural Networks & Node Embedding Representations",
+              "academicReason": "CSE 405 syllabus assumes prior mastery of fundamental concepts from \"Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)\"."
+            },
+            {
+              "fromCourse": "CSE 207 (Data Structures)",
+              "fromTopic": "Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)",
+              "relation": "IS_FOUNDATIONAL_PREREQUISITE_FOR",
+              "toCourse": "CSE 401 (Artificial Intelligence)",
+              "toTopic": "Bayesian Reasoning & Directed Acyclic Belief Graphs",
+              "academicReason": "CSE 401 syllabus assumes prior mastery of fundamental concepts from \"Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)\"."
+            },
+            {
+              "fromCourse": "CSE 207 (Data Structures)",
+              "fromTopic": "Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)",
+              "relation": "IS_FOUNDATIONAL_PREREQUISITE_FOR",
+              "toCourse": "CSE 301 (Algorithms)",
+              "toTopic": "NP-Completeness, Reductions & Approximation",
+              "academicReason": "CSE 301 syllabus assumes prior mastery of fundamental concepts from \"Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)\"."
+            }
+          ],
+          "graphChain": [
+            "CSE 207: Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)",
+            "CSE 301: Advanced Graph Algorithms (Bellman-Ford, Floyd-Warshall, Max-Flow Ford-Fulkerson)",
+            "CSE 401: Heuristic State-Space Search (A*, IDA*, Graph Traversals)",
+            "CSE 307: Deadlock Detection & Resource Allocation Directed Graphs",
+            "CSE 405: Graph Neural Networks & Node Embedding Representations",
+            "CSE 401: Bayesian Reasoning & Directed Acyclic Belief Graphs",
+            "CSE 301: NP-Completeness, Reductions & Approximation"
+          ],
+          "academicStandardReference": "OBE Accreditation Standard 3: Articulation of Prerequisite Sequences (IEEE/ACM CS Curricula 2023)."
+        },
+        {
+          "id": "ev-clo",
+          "dimension": "CLO Impact",
+          "evidenceType": "VERIFIED_STRUCTURAL_RELATION",
+          "title": "Direct Contributor to CSE207-CLO3 (Create)",
+          "summary": "Topic \"Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)\" accounts for substantial instruction towards \"Design efficient recursive, tree, and graph algorithms for network traversals, shortest paths, and search spaces.\".",
+          "paths": [
+            {
+              "fromCourse": "CSE 207",
+              "fromTopic": "Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)",
+              "relation": "DIRECTLY_ASSESSES_CLO",
+              "toCourse": "CSE 207",
+              "toTopic": "CSE207-CLO3",
+              "academicReason": "This topic provides 3.5 weeks of dedicated instructional contact time for CSE207-CLO3."
+            }
+          ],
+          "graphChain": [
+            "CSE 207 ➔ Topic: Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST) (3.5 wks)",
+            "CSE207-CLO3 [Create Level] ➔ Target Competency Achieved: 35%"
+          ],
+          "academicStandardReference": "ABET Criterion 3: Student Outcomes Assessment & Program Educational Objectives."
+        },
+        {
+          "id": "ev-readiness",
+          "dimension": "Student Readiness",
+          "evidenceType": "CURRICULUM_MODELING_INFERENCE",
+          "title": "Cohort Transition Gap in CSE 301",
+          "summary": "Faculty teaching CSE 301 will need to spend 2-3 weeks of remedial review if students arrive without foundational \"Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)\" training.",
+          "paths": [
+            {
+              "fromCourse": "CSE 207 (Sem 3)",
+              "fromTopic": "Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)",
+              "relation": "FEEDS_STUDENT_COHORT_INTO",
+              "toCourse": "CSE 301 (Sem 4)",
+              "toTopic": "Course Entry Readiness",
+              "academicReason": "Expected entry competency requires implementation proficiency in Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)."
+            }
+          ],
+          "graphChain": [
+            "Semester 3: CSE 207 (Topic: Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST))",
+            "Semester Break / Cohort Advancement",
+            "Semester 4: CSE 301 (Advanced Topics)"
+          ],
+          "academicStandardReference": "Faculty Senate Academic Policy on Prerequisite Knowledge Transfer."
+        }
+      ],
+      "executiveSummary": {
+        "headline": "High-Risk Curriculum Modification: Removing \"Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)\" triggers cascade across 5 subsequent courses.",
+        "overallAssessment": "The proposed deletion of \"Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)\" from CSE 207 carries an overall modeled impact score of 48/100 (HIGH RISK). While it relieves 3.5 weeks of course density, it destabilizes prerequisite readiness for CSE 301 (Algorithms) and CSE 401 (Artificial Intelligence).",
+        "keyRisks": [
+          "CLO Coverage Reduction: CSE207-CLO3 drops by -5% (100% ➔ 105%).",
+          "Prerequisite Invalidation: 6 downstream topics lose required conceptual foundations.",
+          "Downstream Cascade: Direct child course CSE 301 (Algorithms) suffers critical instructional disruption.",
+          "Critical Knowledge Gap: Standard OBE competencies in graph representations and search spaces omitted."
+        ],
+        "recommendedAction": "Adopt Plan C (Relocate topic to CSE 301 Algorithms) or Plan B (Retain 1.5-week core subset) to maintain accreditation integrity."
+      },
+      "alternatives": [
+        {
+          "id": "plan-a",
+          "name": "Plan A: Proposed Full Removal",
+          "tag": "Proposed Action",
+          "description": "Permanently delete \"Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)\" from CSE 207.",
+          "overallImpact": 48,
+          "riskLevel": "MEDIUM",
+          "riskColor": "amber",
+          "cloImpact": "High (Severe coverage drop)",
+          "prerequisiteRisk": "High (Multiple downstream topics broken)",
+          "downstreamRisk": "High (Algorithms & AI affected)",
+          "curriculumGap": "High (Critical traversal concepts untaught)",
+          "assessmentRisk": "Medium (Marks shifted to other topics)",
+          "studentReadiness": "High (Incoming cohort lacking fundamentals)",
+          "pros": [
+            "Frees up 3.5 weeks in CSE 207 for existing topics.",
+            "Reduces initial student cognitive overload in early semester."
+          ],
+          "cons": [
+            "Creates severe downstream knowledge gaps in Algorithms and AI.",
+            "Breaks CLO-3 accreditation alignment.",
+            "Faculty in downstream courses will need to teach prerequisite concepts from scratch."
+          ],
+          "recommendationRationale": "Not recommended as-is due to high cascade risk across 3 subsequent semesters."
+        },
+        {
+          "id": "plan-b",
+          "name": "Plan B: Scope Reduction (Essential Subset)",
+          "tag": "Recommended Compromise",
+          "description": "Retain core concepts of \"Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)\" (BFS/DFS, Representations) but reduce instructional time from 3.5 weeks to 1.5 weeks. Omit advanced topics like Minimum Spanning Trees and Bellman-Ford.",
+          "overallImpact": 42,
+          "riskLevel": "MEDIUM",
+          "riskColor": "amber",
+          "cloImpact": "Medium (Essential concepts preserved)",
+          "prerequisiteRisk": "Medium (Basic traversal preserved; advanced topics deferred)",
+          "downstreamRisk": "Medium (Algorithms can build on basic BFS/DFS)",
+          "curriculumGap": "Low (Core foundations intact)",
+          "assessmentRisk": "Low (Minor re-weighting)",
+          "studentReadiness": "Medium (Students know basic data structures)",
+          "pros": [
+            "Frees 2.0 weeks of instructional time in CSE 207.",
+            "Preserves prerequisite readiness for CSE 301 Algorithms.",
+            "Students maintain exposure to fundamental graph search algorithms."
+          ],
+          "cons": [
+            "Leaves less time for hands-on programming projects on graphs.",
+            "Slightly compresses coverage of Dijkstra's algorithm."
+          ],
+          "recommendationRationale": "Provides a balanced compromise: reduces syllabus congestion while preserving necessary prerequisite readiness."
+        },
+        {
+          "id": "plan-c",
+          "name": "Plan C: Curricular Relocation (Move to Algorithms)",
+          "tag": "Lowest Modeled Impact",
+          "isSafest": true,
+          "description": "Move the in-depth treatment of \"Graph Algorithms (Representations, BFS, DFS, Dijkstra, MST)\" to CSE 301 (Algorithms), while keeping only a 1-week conceptual overview in CSE 207. Formally update the CSE 301 course syllabus and credits accordingly.",
+          "overallImpact": 26,
+          "riskLevel": "LOW",
+          "riskColor": "emerald",
+          "cloImpact": "Low (CLO re-allocated to CSE 301)",
+          "prerequisiteRisk": "Low (Taught at the immediate point of need in Algorithms)",
+          "downstreamRisk": "Low (Algorithms syllabus absorbs and structures the topic)",
+          "curriculumGap": "Low (Zero net loss in curriculum-wide knowledge)",
+          "assessmentRisk": "Low (Harmonized across semesters)",
+          "studentReadiness": "Low (Continuously reinforced in algorithmic context)",
+          "pros": [
+            "Zero total knowledge loss across the degree program.",
+            "Allows Graph Algorithms to be taught with greater mathematical maturity in Semester 4.",
+            "Eliminates conceptual redundancy between Data Structures and Algorithms."
+          ],
+          "cons": [
+            "Requires coordinated syllabus approval across two faculty instructors.",
+            "CSE 301 syllabus will need 2 additional weeks of instructional time."
+          ],
+          "recommendationRationale": "Model indicates lowest structural risk (26/100). Foundational concepts remain in the degree program without breaking downstream courses."
+        }
+      ],
+      "aiEnrichment": {
+        "isAiEnriched": false,
+        "engineMode": "LOCAL_DETERMINISTIC_ENGINE",
+        "engineBadge": "Local Academic Simulation Engine (Deterministic)",
+        "aiNotes": "Running in zero-latency deterministic academic modeling mode. Graph analysis, CLO mappings, and scores are mathematically verified."
+      },
+      "facultyControl": {
+        "status": "PENDING_FACULTY_DECISION",
+        "availableActions": [
+          "ACCEPT_PROPOSAL",
+          "MODIFY_PROPOSAL",
+          "REJECT_PROPOSAL",
+          "SEND_FOR_COMMITTEE_REVIEW"
+        ],
+        "notes": ""
+      }
+    }
+  },
+  {
+    "simulationId": "sim-hist-001",
+    "timestamp": "2026-09-04T14:20:00.000Z",
+    "course": {
+      "id": "CSE-207",
+      "code": "CSE 207",
+      "name": "Data Structures"
+    },
+    "action": "REMOVE_TOPIC",
+    "targetTopic": {
+      "id": "DS-6",
+      "name": "Graph Algorithms",
+      "weeks": 3.5
+    },
+    "overallScore": 78,
+    "riskLevel": "HIGH",
+    "riskColor": "crimson",
+    "confidence": 94,
+    "facultyDecision": "REJECT_PROPOSAL",
+    "facultyNotes": "Curriculum committee voted to retain Graph Algorithms in CSE 207 due to severe downstream ripple on Algorithms and AI.",
+    "summary": "Simulated removal of Graph Algorithms. High risk detected across CLO-3, Algorithms (CSE 301), and Artificial Intelligence (CSE 401)."
+  },
+  {
+    "simulationId": "sim-hist-002",
+    "timestamp": "2026-09-05T09:15:00.000Z",
+    "course": {
+      "id": "CSE-405",
+      "code": "CSE 405",
+      "name": "Machine Learning"
+    },
+    "action": "CHANGE_ASSESSMENT",
+    "targetTopic": {
+      "id": null,
+      "name": "Assessment Mark Re-weighting",
+      "weeks": 0
+    },
+    "overallScore": 42,
+    "riskLevel": "MEDIUM",
+    "riskColor": "amber",
+    "confidence": 92,
+    "facultyDecision": "ACCEPT_PROPOSAL",
+    "facultyNotes": "Approved phased rollout to expand practical projects to 20% to foster hands-on coding skills.",
+    "summary": "Shifted practical assessment from 10% to 25%. Medium operational risk on lab infrastructure."
+  },
+  {
+    "simulationId": "sim-hist-003",
+    "timestamp": "2026-09-05T16:45:00.000Z",
+    "course": {
+      "id": "CSE-401",
+      "code": "CSE 401",
+      "name": "Artificial Intelligence"
+    },
+    "action": "ADD_TOPIC",
+    "targetTopic": {
+      "id": null,
+      "name": "Python Programming for Scientific Computing",
+      "weeks": 2
+    },
+    "overallScore": 22,
+    "riskLevel": "LOW",
+    "riskColor": "emerald",
+    "confidence": 96,
+    "facultyDecision": "ACCEPT_PROPOSAL",
+    "facultyNotes": "Adopted for upcoming 2026 Spring term. Synchronized with CSE 405.",
+    "summary": "Added 2 weeks of Python scripting to AI. Positive enrichment observed for Machine Learning readiness."
+  }
+]
