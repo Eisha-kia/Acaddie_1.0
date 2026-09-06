@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import '../services/academic_engine.dart';
 
 class SimulationStudioScreen extends StatefulWidget {
@@ -93,7 +94,14 @@ class _SimulationStudioScreenState extends State<SimulationStudioScreen> {
                 child: const Text("CHANGE IMPACT STUDIO", style: TextStyle(color: Color(0xFF38BDF8), fontSize: 11, fontWeight: FontWeight.bold)),
               ),
               const SizedBox(height: 6),
-              const Text("Simulate an Academic Change", style: TextStyle(fontSize: 26, fontWeight: FontWeight.bold, color: Colors.white)),
+              Text(
+                "Simulate an Academic Change",
+                style: GoogleFonts.cormorantGaramond(
+                  fontSize: 32,
+                  fontWeight: FontWeight.w600,
+                  color: Colors.white,
+                ),
+              ),
               const Text("Configure a proposed syllabus or curriculum change. Acaddie will model the ripple effects across the degree graph.", style: TextStyle(fontSize: 13, color: Color(0xFF94A3B8))),
               const SizedBox(height: 20),
 

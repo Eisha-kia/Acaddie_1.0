@@ -39,10 +39,10 @@ class SimulationHistoryScreen extends StatelessWidget {
           const SizedBox(height: 8),
           Text(
             'Simulation History',
-            style: GoogleFonts.inter(
+            style: GoogleFonts.cormorantGaramond(
               color: Colors.white,
-              fontSize: 26,
-              fontWeight: FontWeight.w700,
+              fontSize: 32,
+              fontWeight: FontWeight.w600,
             ),
           ),
           Text(

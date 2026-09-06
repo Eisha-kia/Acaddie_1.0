@@ -72,10 +72,10 @@ class _CourseCatalogScreenState extends State<CourseCatalogScreen> {
           // Title & Subtitle
           Text(
             'Courses, Syllabi & Outcomes',
-            style: GoogleFonts.inter(
+            style: GoogleFonts.cormorantGaramond(
               color: Colors.white,
-              fontSize: 26,
-              fontWeight: FontWeight.w700,
+              fontSize: 32,
+              fontWeight: FontWeight.w600,
             ),
           ),
           const SizedBox(height: 4),

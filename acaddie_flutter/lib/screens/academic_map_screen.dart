@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import '../models/curriculum_models.dart';
 import '../services/academic_engine.dart';
 
@@ -90,7 +91,14 @@ class _AcademicMapScreenState extends State<AcademicMapScreen> {
                     ],
                   ),
                   const SizedBox(height: 6),
-                  const Text("Department Academic Dependency Map", style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.white)),
+                  Text(
+                    "Department Academic Dependency Map",
+                    style: GoogleFonts.cormorantGaramond(
+                      fontSize: 30,
+                      fontWeight: FontWeight.w600,
+                      color: Colors.white,
+                    ),
+                  ),
                   const Text("Visual representation of course prerequisites and downstream ripple effects.", style: TextStyle(fontSize: 13, color: Color(0xFF94A3B8))),
                 ],
               ),

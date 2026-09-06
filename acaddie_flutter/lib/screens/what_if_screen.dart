@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import '../models/curriculum_models.dart';
 
 class WhatIfScreen extends StatelessWidget {
@@ -42,7 +43,14 @@ class WhatIfScreen extends StatelessWidget {
                         child: const Text("WHAT-IF MULTI-PLAN MATRIX", style: TextStyle(color: Color(0xFF38BDF8), fontSize: 11, fontWeight: FontWeight.bold)),
                       ),
                       const SizedBox(height: 6),
-                      const Text("Compare Academic Decision Alternatives", style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.white)),
+                      Text(
+                        "Compare Academic Decision Alternatives",
+                        style: GoogleFonts.cormorantGaramond(
+                          fontSize: 30,
+                          fontWeight: FontWeight.w600,
+                          color: Colors.white,
+                        ),
+                      ),
                       Text("Evaluate trade-offs between proposed modification and synthesized alternatives for ${simulation!.course.code}.", style: const TextStyle(fontSize: 13, color: Color(0xFF94A3B8))),
                     ],
                   ),

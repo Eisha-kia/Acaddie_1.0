@@ -31,14 +31,14 @@ class AuthService {
   // Register a new account
   static Future<String?> register(AcaddieUser user) async {
     if (user.email.isEmpty || !user.email.contains('@')) {
-      return 'সঠিক ইমেইল দিন';
+      return 'Please enter a valid university email address';
     }
     if (user.password.length < 6) {
-      return 'পাসওয়ার্ড কমপক্ষে ৬ অক্ষরের হতে হবে';
+      return 'Password must be at least 6 characters long';
     }
-    if (user.fullName.isEmpty) return 'পূর্ণ নাম দিন';
-    if (user.varsityName.isEmpty) return 'বিশ্ববিদ্যালয়ের নাম দিন';
-    if (user.varsityId.isEmpty) return 'বিশ্ববিদ্যালয় আইডি দিন';
+    if (user.fullName.isEmpty) return 'Please enter your full name';
+    if (user.varsityName.isEmpty) return 'Please enter your university name';
+    if (user.varsityId.isEmpty) return 'Please enter your university ID';
 
     final prefs = await SharedPreferences.getInstance();
     await prefs.setBool(_keyLoggedIn, true);
@@ -58,9 +58,13 @@ class AuthService {
     final storedEmail = prefs.getString(_keyEmail);
     final storedPassword = prefs.getString(_keyPassword);
 
-    if (storedEmail == null) return 'কোনো অ্যাকাউন্ট নেই। আগে রেজিস্ট্রেশন করুন।';
-    if (storedEmail != email) return 'ইমেইল মিলছে না';
-    if (storedPassword != password) return 'পাসওয়ার্ড ভুল';
+    if (storedEmail == null) return 'No account found. Please register first.';
+    if (storedEmail.toLowerCase().trim() != email.toLowerCase().trim()) {
+      return 'Email address does not match registered account';
+    }
+    if (storedPassword != password) {
+      return 'Incorrect password. Please try again.';
+    }
 
     await prefs.setBool(_keyLoggedIn, true);
     return null; // null = success

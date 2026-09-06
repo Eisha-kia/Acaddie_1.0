@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../services/auth_service.dart';
+import '../services/theme_service.dart';
 import '../models/user_model.dart';
+import '../widgets/acaddie_logo.dart';
 
 // ─────────────────────────────────────────────────────────────────────────────
 // LOGIN SCREEN
@@ -31,14 +33,14 @@ class _LoginScreenState extends State<LoginScreen> {
     final email = _emailCtrl.text.trim();
     final pass = _passCtrl.text.trim();
     if (email.isEmpty || pass.isEmpty) {
-      setState(() => _error = 'ইমেইল এবং পাসওয়ার্ড দিন');
+      setState(() => _error = 'Please enter both your email and password');
       return;
     }
     setState(() {
       _loading = true;
       _error = null;
     });
-    await Future.delayed(const Duration(milliseconds: 600));
+    await Future.delayed(const Duration(milliseconds: 500));
     final err = await AuthService.login(email, pass);
     if (!mounted) return;
     setState(() => _loading = false);
@@ -51,100 +53,85 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = ThemeService.isDark;
+
     return Scaffold(
-      backgroundColor: const Color(0xFF060D1A),
+      backgroundColor: isDark ? const Color(0xFF060D1A) : const Color(0xFFF8FAFC),
       body: Row(
         children: [
-          // Left panel — branding
+          // Left panel — Academic branding
           Expanded(
             child: Container(
-              decoration: const BoxDecoration(
+              decoration: BoxDecoration(
                 gradient: LinearGradient(
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
-                  colors: [Color(0xFF0A1628), Color(0xFF0D1F3C)],
+                  colors: isDark
+                      ? [const Color(0xFF0A1628), const Color(0xFF0D1F3C)]
+                      : [const Color(0xFFE2E8F0), const Color(0xFFF1F5F9)],
                 ),
               ),
               child: Padding(
-                padding: const EdgeInsets.all(48),
+                padding: const EdgeInsets.all(52),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    // Logo
-                    Row(
-                      children: [
-                        Container(
-                          width: 48,
-                          height: 48,
-                          decoration: BoxDecoration(
-                            gradient: const LinearGradient(
-                              colors: [Color(0xFF0284C7), Color(0xFF6366F1)],
-                            ),
-                            borderRadius: BorderRadius.circular(12),
-                          ),
-                          child: const Icon(Icons.school,
-                              color: Colors.white, size: 26),
-                        ),
-                        const SizedBox(width: 14),
-                        Text('ACADDIE',
-                            style: GoogleFonts.inter(
-                              color: Colors.white,
-                              fontWeight: FontWeight.w800,
-                              fontSize: 28,
-                              letterSpacing: 2,
-                            )),
-                      ],
-                    ),
-                    const SizedBox(height: 16),
-                    Text('Think. Simulate. Decide.',
-                        style: GoogleFonts.inter(
-                          color: const Color(0xFF38BDF8),
-                          fontSize: 16,
-                          fontWeight: FontWeight.w600,
-                        )),
-                    const SizedBox(height: 48),
-                    Text('AI-Powered Academic\nDecision Assistant',
-                        style: GoogleFonts.inter(
-                          color: Colors.white,
-                          fontSize: 32,
-                          fontWeight: FontWeight.w700,
-                          height: 1.3,
-                        )),
-                    const SizedBox(height: 20),
+                    AcaddieLogo(size: 52, isDark: isDark),
+                    const SizedBox(height: 36),
                     Text(
-                        'Faculty members can simulate curriculum\nchanges before making them — understanding\nthe full impact across courses, CLOs, and students.',
-                        style: GoogleFonts.inter(
-                          color: const Color(0xFF64748B),
-                          fontSize: 15,
-                          height: 1.7,
-                        )),
+                      'Think. Simulate. Decide.',
+                      style: AppTypography.heading(
+                        fontSize: 38,
+                        fontWeight: FontWeight.w600,
+                        color: isDark ? Colors.white : const Color(0xFF0F172A),
+                        letterSpacing: 0.5,
+                      ),
+                    ),
+                    const SizedBox(height: 12),
+                    Text(
+                      'Google Maps for Academic Decisions.\nSimulate downstream curriculum ripple effects before making syllabus modifications.',
+                      style: AppTypography.body(
+                        fontSize: 15,
+                        color: isDark ? const Color(0xFF94A3B8) : const Color(0xFF475569),
+                        height: 1.6,
+                      ),
+                    ),
                     const SizedBox(height: 48),
-                    // Feature bullets
+
+                    // Feature badges
                     ...[
-                      ('⚡', '7-Dimension Impact Analysis'),
-                      ('🗺️', 'Live Academic Dependency Map'),
-                      ('🔀', 'What-If Plan Comparison'),
-                      ('🎓', 'Faculty Decision Authority'),
-                    ].map((item) => Padding(
-                          padding: const EdgeInsets.only(bottom: 14),
+                      '7 Core Academic Dimensions analysis',
+                      'Verifiable causal dependency chains',
+                      'Real-time animated curriculum ripple map',
+                      'What-If comparative alternatives (Plan A/B/C)',
+                    ].map((feature) => Padding(
+                          padding: const EdgeInsets.only(bottom: 12),
                           child: Row(
                             children: [
-                              Text(item.$1, style: const TextStyle(fontSize: 18)),
-                              const SizedBox(width: 12),
-                              Text(item.$2,
-                                  style: GoogleFonts.inter(
-                                    color: const Color(0xFF94A3B8),
-                                    fontSize: 14,
-                                  )),
+                              Container(
+                                width: 20,
+                                height: 20,
+                                decoration: BoxDecoration(
+                                  color: const Color(0xFF0284C7).withValues(alpha: 0.2),
+                                  shape: BoxShape.circle,
+                                ),
+                                child: const Icon(Icons.check,
+                                    color: Color(0xFF38BDF8), size: 13),
+                              ),
+                              const SizedBox(width: 10),
+                              Text(
+                                feature,
+                                style: AppTypography.body(
+                                  fontSize: 13,
+                                  color: isDark
+                                      ? const Color(0xFFCBD5E1)
+                                      : const Color(0xFF334155),
+                                  fontWeight: FontWeight.w500,
+                                ),
+                              ),
                             ],
                           ),
-                        )),
-                    const SizedBox(height: 48),
-                    Text('AUST CSE Carnival 8.0 — AI Build Hackathon',
-                        style: GoogleFonts.inter(
-                          color: const Color(0xFF334155),
-                          fontSize: 11,
                         )),
                   ],
                 ),
@@ -152,153 +139,187 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
           ),
 
-          // Right panel — login form
-          Container(
-            width: 440,
-            color: const Color(0xFF080F1E),
+          // Right panel — Login Form
+          Expanded(
             child: Center(
-              child: SingleChildScrollView(
-                padding: const EdgeInsets.all(40),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text('স্বাগতম!',
-                        style: GoogleFonts.inter(
-                          color: Colors.white,
-                          fontSize: 28,
-                          fontWeight: FontWeight.w700,
-                        )),
-                    const SizedBox(height: 6),
-                    Text('আপনার অ্যাকাউন্টে লগইন করুন',
-                        style: GoogleFonts.inter(
-                          color: const Color(0xFF64748B),
-                          fontSize: 14,
-                        )),
-                    const SizedBox(height: 36),
-
-                    // Error message
-                    if (_error != null) ...[
-                      Container(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 14, vertical: 10),
-                        decoration: BoxDecoration(
-                          color: const Color(0xFFEF4444).withValues(alpha: 0.1),
-                          borderRadius: BorderRadius.circular(8),
-                          border: Border.all(
-                              color: const Color(0xFFEF4444).withValues(alpha: 0.3)),
-                        ),
-                        child: Row(
-                          children: [
-                            const Icon(Icons.error_outline,
-                                color: Color(0xFFF87171), size: 16),
-                            const SizedBox(width: 8),
-                            Expanded(
-                              child: Text(_error!,
-                                  style: GoogleFonts.inter(
-                                      color: const Color(0xFFF87171),
-                                      fontSize: 13)),
-                            ),
-                          ],
+              child: ConstrainedBox(
+                constraints: const BoxConstraints(maxWidth: 440),
+                child: SingleChildScrollView(
+                  padding: const EdgeInsets.all(40),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Welcome Back',
+                        style: AppTypography.heading(
+                          fontSize: 34,
+                          fontWeight: FontWeight.w600,
+                          color: isDark ? Colors.white : const Color(0xFF0F172A),
                         ),
                       ),
-                      const SizedBox(height: 16),
-                    ],
+                      const SizedBox(height: 6),
+                      Text(
+                        'Sign in to your university faculty account',
+                        style: AppTypography.body(
+                          fontSize: 14,
+                          color: const Color(0xFF64748B),
+                        ),
+                      ),
+                      const SizedBox(height: 32),
 
-                    // Email field
-                    _label('ইমেইল ঠিকানা'),
-                    _inputField(
-                      controller: _emailCtrl,
-                      hint: 'example@aust.edu',
-                      icon: Icons.email_outlined,
-                    ),
-                    const SizedBox(height: 16),
+                      // Error message
+                      if (_error != null) ...[
+                        Container(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 14, vertical: 10),
+                          decoration: BoxDecoration(
+                            color: const Color(0xFFEF4444).withValues(alpha: 0.1),
+                            borderRadius: BorderRadius.circular(8),
+                            border: Border.all(
+                                color: const Color(0xFFEF4444).withValues(alpha: 0.3)),
+                          ),
+                          child: Row(
+                            children: [
+                              const Icon(Icons.error_outline,
+                                  color: Color(0xFFF87171), size: 16),
+                              const SizedBox(width: 8),
+                              Expanded(
+                                child: Text(
+                                  _error!,
+                                  style: AppTypography.body(
+                                    fontSize: 13,
+                                    color: const Color(0xFFF87171),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        const SizedBox(height: 16),
+                      ],
 
-                    // Password field
-                    _label('পাসওয়ার্ড'),
-                    _inputField(
-                      controller: _passCtrl,
-                      hint: '••••••••',
-                      icon: Icons.lock_outline,
-                      obscure: !_showPass,
-                      suffix: IconButton(
-                        icon: Icon(
+                      // Email field
+                      _label('University Email Address', isDark),
+                      _inputField(
+                        controller: _emailCtrl,
+                        hint: 'instructor@aust.edu',
+                        icon: Icons.email_outlined,
+                        isDark: isDark,
+                      ),
+                      const SizedBox(height: 18),
+
+                      // Password field
+                      _label('Password', isDark),
+                      _inputField(
+                        controller: _passCtrl,
+                        hint: '••••••••',
+                        icon: Icons.lock_outline,
+                        obscure: !_showPass,
+                        isDark: isDark,
+                        suffix: IconButton(
+                          icon: Icon(
                             _showPass
                                 ? Icons.visibility_off_outlined
                                 : Icons.visibility_outlined,
-                            color: const Color(0xFF475569),
-                            size: 18),
-                        onPressed: () =>
-                            setState(() => _showPass = !_showPass),
-                      ),
-                    ),
-                    const SizedBox(height: 28),
-
-                    // Login button
-                    SizedBox(
-                      width: double.infinity,
-                      height: 50,
-                      child: ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: const Color(0xFF0284C7),
-                          foregroundColor: Colors.white,
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10)),
+                            color: const Color(0xFF64748B),
+                            size: 18,
+                          ),
+                          onPressed: () =>
+                              setState(() => _showPass = !_showPass),
                         ),
-                        onPressed: _loading ? null : _login,
-                        child: _loading
-                            ? const SizedBox(
-                                width: 20,
-                                height: 20,
-                                child: CircularProgressIndicator(
-                                    color: Colors.white, strokeWidth: 2),
-                              )
-                            : Text('লগইন করুন',
-                                style: GoogleFonts.inter(
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.w600)),
                       ),
-                    ),
-                    const SizedBox(height: 20),
+                      const SizedBox(height: 28),
 
-                    // Divider
-                    Row(
-                      children: [
-                        Expanded(
+                      // Login button
+                      SizedBox(
+                        width: double.infinity,
+                        height: 48,
+                        child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: const Color(0xFF0284C7),
+                            foregroundColor: Colors.white,
+                            elevation: 0,
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(8)),
+                          ),
+                          onPressed: _loading ? null : _login,
+                          child: _loading
+                              ? const SizedBox(
+                                  width: 20,
+                                  height: 20,
+                                  child: CircularProgressIndicator(
+                                      color: Colors.white, strokeWidth: 2),
+                                )
+                              : Text(
+                                  'Sign In',
+                                  style: AppTypography.body(
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w600,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                        ),
+                      ),
+                      const SizedBox(height: 20),
+
+                      // Divider
+                      Row(
+                        children: [
+                          Expanded(
                             child: Divider(
-                                color: Colors.white.withValues(alpha: 0.08))),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 12),
-                          child: Text('অথবা',
-                              style: GoogleFonts.inter(
-                                  color: const Color(0xFF475569),
-                                  fontSize: 12)),
-                        ),
-                        Expanded(
+                              color: isDark
+                                  ? Colors.white.withValues(alpha: 0.1)
+                                  : const Color(0xFFCBD5E1),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 12),
+                            child: Text(
+                              'or',
+                              style: AppTypography.body(
+                                fontSize: 12,
+                                color: const Color(0xFF64748B),
+                              ),
+                            ),
+                          ),
+                          Expanded(
                             child: Divider(
-                                color: Colors.white.withValues(alpha: 0.08))),
-                      ],
-                    ),
-                    const SizedBox(height: 20),
-
-                    // Register link
-                    SizedBox(
-                      width: double.infinity,
-                      height: 50,
-                      child: OutlinedButton(
-                        style: OutlinedButton.styleFrom(
-                          foregroundColor: Colors.white,
-                          side: BorderSide(
-                              color: Colors.white.withValues(alpha: 0.15)),
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10)),
-                        ),
-                        onPressed: widget.onGoToRegister,
-                        child: Text('নতুন অ্যাকাউন্ট তৈরি করুন',
-                            style: GoogleFonts.inter(
-                                fontSize: 14, fontWeight: FontWeight.w500)),
+                              color: isDark
+                                  ? Colors.white.withValues(alpha: 0.1)
+                                  : const Color(0xFFCBD5E1),
+                            ),
+                          ),
+                        ],
                       ),
-                    ),
-                  ],
+                      const SizedBox(height: 20),
+
+                      // Register link
+                      SizedBox(
+                        width: double.infinity,
+                        height: 48,
+                        child: OutlinedButton(
+                          style: OutlinedButton.styleFrom(
+                            foregroundColor: isDark ? Colors.white : const Color(0xFF0F172A),
+                            side: BorderSide(
+                              color: isDark
+                                  ? Colors.white.withValues(alpha: 0.15)
+                                  : const Color(0xFFCBD5E1),
+                            ),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(8)),
+                          ),
+                          onPressed: widget.onGoToRegister,
+                          child: Text(
+                            'Create New Faculty Account',
+                            style: AppTypography.body(
+                              fontSize: 14,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),
@@ -308,14 +329,17 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
-  Widget _label(String text) {
+  Widget _label(String text, bool isDark) {
     return Padding(
       padding: const EdgeInsets.only(bottom: 6),
-      child: Text(text,
-          style: GoogleFonts.inter(
-              color: const Color(0xFF94A3B8),
-              fontSize: 13,
-              fontWeight: FontWeight.w500)),
+      child: Text(
+        text,
+        style: AppTypography.body(
+          fontSize: 12,
+          fontWeight: FontWeight.w600,
+          color: isDark ? const Color(0xFF94A3B8) : const Color(0xFF475569),
+        ),
+      ),
     );
   }
 
@@ -325,36 +349,39 @@ class _LoginScreenState extends State<LoginScreen> {
     required IconData icon,
     bool obscure = false,
     Widget? suffix,
+    required bool isDark,
   }) {
-    return TextField(
-      controller: controller,
-      obscureText: obscure,
-      style: GoogleFonts.inter(color: Colors.white, fontSize: 14),
-      onSubmitted: (_) => _login(),
-      decoration: InputDecoration(
-        hintText: hint,
-        hintStyle: GoogleFonts.inter(
-            color: const Color(0xFF334155), fontSize: 14),
-        prefixIcon: Icon(icon, color: const Color(0xFF475569), size: 18),
-        suffixIcon: suffix,
-        filled: true,
-        fillColor: const Color(0xFF0F172A),
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10),
-          borderSide:
-              BorderSide(color: Colors.white.withValues(alpha: 0.08)),
+    return Container(
+      decoration: BoxDecoration(
+        color: isDark ? const Color(0xFF0F172A) : Colors.white,
+        borderRadius: BorderRadius.circular(8),
+        border: Border.all(
+          color: isDark
+              ? Colors.white.withValues(alpha: 0.08)
+              : const Color(0xFFCBD5E1),
         ),
-        enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10),
-          borderSide:
-              BorderSide(color: Colors.white.withValues(alpha: 0.08)),
+      ),
+      child: TextField(
+        controller: controller,
+        obscureText: obscure,
+        style: AppTypography.body(
+          fontSize: 13,
+          color: isDark ? Colors.white : const Color(0xFF0F172A),
         ),
-        focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10),
-          borderSide: const BorderSide(color: Color(0xFF0284C7)),
+        decoration: InputDecoration(
+          prefixIcon: Icon(icon,
+              color: isDark ? const Color(0xFF64748B) : const Color(0xFF94A3B8),
+              size: 18),
+          suffixIcon: suffix,
+          hintText: hint,
+          hintStyle: AppTypography.body(
+            fontSize: 13,
+            color: const Color(0xFF64748B),
+          ),
+          border: InputBorder.none,
+          contentPadding:
+              const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
         ),
-        contentPadding:
-            const EdgeInsets.symmetric(horizontal: 14, vertical: 14),
       ),
     );
   }
@@ -383,30 +410,25 @@ class _RegisterScreenState extends State<RegisterScreen> {
   final _phoneCtrl = TextEditingController();
   final _passCtrl = TextEditingController();
   final _confirmPassCtrl = TextEditingController();
-  final _varsityCtrl = TextEditingController();
+  final _varsityCtrl = TextEditingController(
+      text: 'Ahsanullah University of Science and Technology (AUST)');
   final _varsityIdCtrl = TextEditingController();
   final _addressCtrl = TextEditingController();
+
   bool _loading = false;
   String? _error;
   bool _showPass = false;
 
-  @override
-  void initState() {
-    super.initState();
-    // Prefill with AUST for hackathon demo
-    _varsityCtrl.text = 'Ahsanullah University of Science and Technology';
-  }
-
   Future<void> _register() async {
     if (_passCtrl.text != _confirmPassCtrl.text) {
-      setState(() => _error = 'পাসওয়ার্ড দুটো মিলছে না');
+      setState(() => _error = 'Passwords do not match');
       return;
     }
     setState(() {
       _loading = true;
       _error = null;
     });
-    await Future.delayed(const Duration(milliseconds: 700));
+    await Future.delayed(const Duration(milliseconds: 600));
     final user = AcaddieUser(
       fullName: _fullNameCtrl.text.trim(),
       email: _emailCtrl.text.trim(),
@@ -428,68 +450,52 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = ThemeService.isDark;
+
     return Scaffold(
-      backgroundColor: const Color(0xFF060D1A),
+      backgroundColor: isDark ? const Color(0xFF060D1A) : const Color(0xFFF8FAFC),
       body: Row(
         children: [
           // Left branding panel
           Expanded(
             flex: 2,
             child: Container(
-              decoration: const BoxDecoration(
+              decoration: BoxDecoration(
                 gradient: LinearGradient(
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
-                  colors: [Color(0xFF0A1628), Color(0xFF0D1F3C)],
+                  colors: isDark
+                      ? [const Color(0xFF0A1628), const Color(0xFF0D1F3C)]
+                      : [const Color(0xFFE2E8F0), const Color(0xFFF1F5F9)],
                 ),
               ),
               child: Padding(
-                padding: const EdgeInsets.all(48),
+                padding: const EdgeInsets.all(52),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Row(
-                      children: [
-                        Container(
-                          width: 48,
-                          height: 48,
-                          decoration: BoxDecoration(
-                            gradient: const LinearGradient(
-                              colors: [Color(0xFF0284C7), Color(0xFF6366F1)],
-                            ),
-                            borderRadius: BorderRadius.circular(12),
-                          ),
-                          child: const Icon(Icons.school,
-                              color: Colors.white, size: 26),
-                        ),
-                        const SizedBox(width: 14),
-                        Text('ACADDIE',
-                            style: GoogleFonts.inter(
-                              color: Colors.white,
-                              fontWeight: FontWeight.w800,
-                              fontSize: 28,
-                              letterSpacing: 2,
-                            )),
-                      ],
+                    AcaddieLogo(size: 52, isDark: isDark),
+                    const SizedBox(height: 36),
+                    Text(
+                      'Faculty\nRegistration',
+                      style: AppTypography.heading(
+                        fontSize: 44,
+                        fontWeight: FontWeight.w600,
+                        color: isDark ? Colors.white : const Color(0xFF0F172A),
+                        height: 1.1,
+                      ),
                     ),
-                    const SizedBox(height: 48),
-                    Text('Faculty\nPlatform',
-                        style: GoogleFonts.inter(
-                          color: Colors.white,
-                          fontSize: 40,
-                          fontWeight: FontWeight.w800,
-                          height: 1.2,
-                        )),
                     const SizedBox(height: 16),
                     Text(
-                        'আপনার একাডেমিক প্রোফাইল তৈরি করুন।\nএকবার তৈরি করলে আর করতে হবে না।',
-                        style: GoogleFonts.inter(
-                          color: const Color(0xFF64748B),
-                          fontSize: 15,
-                          height: 1.7,
-                        )),
-                    const SizedBox(height: 48),
+                      'Create your official academic profile once.\nYour session will persist securely on this device.',
+                      style: AppTypography.body(
+                        fontSize: 15,
+                        color: isDark ? const Color(0xFF94A3B8) : const Color(0xFF475569),
+                        height: 1.6,
+                      ),
+                    ),
+                    const SizedBox(height: 36),
                     Container(
                       padding: const EdgeInsets.all(20),
                       decoration: BoxDecoration(
@@ -501,29 +507,38 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text('রেজিস্ট্রেশনের পর আপনি পারবেন:',
-                              style: GoogleFonts.inter(
-                                  color: const Color(0xFF38BDF8),
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 13)),
+                          Text(
+                            'Authorized Access Features:',
+                            style: AppTypography.body(
+                              fontSize: 13,
+                              fontWeight: FontWeight.bold,
+                              color: const Color(0xFF38BDF8),
+                            ),
+                          ),
                           const SizedBox(height: 12),
                           ...[
-                            'সিলেবাস পরিবর্তনের আগে impact বিশ্লেষণ করুন',
-                            'CLO, prerequisite, downstream course দেখুন',
-                            'What-If Plan A, B, C তুলনা করুন',
-                            'Official academic report export করুন',
+                            'Syllabus modification impact simulation',
+                            'Automated multi-hop downstream cascade mapping',
+                            'What-If comparative matrix analysis (Plans A, B, C)',
+                            'Printable official academic accreditation reports',
                           ].map((t) => Padding(
                                 padding: const EdgeInsets.only(bottom: 8),
                                 child: Row(
                                   children: [
                                     const Icon(Icons.check_circle,
                                         color: Color(0xFF10B981), size: 16),
-                                    const SizedBox(width: 10),
+                                    const SizedBox(width: 8),
                                     Expanded(
-                                        child: Text(t,
-                                            style: GoogleFonts.inter(
-                                                color: const Color(0xFF94A3B8),
-                                                fontSize: 13))),
+                                      child: Text(
+                                        t,
+                                        style: AppTypography.body(
+                                          fontSize: 12,
+                                          color: isDark
+                                              ? const Color(0xFF94A3B8)
+                                              : const Color(0xFF475569),
+                                        ),
+                                      ),
+                                    ),
                                   ],
                                 ),
                               )),
@@ -539,25 +554,30 @@ class _RegisterScreenState extends State<RegisterScreen> {
           // Right form panel
           Expanded(
             flex: 3,
-            child: Container(
-              color: const Color(0xFF080F1E),
-              child: Center(
+            child: Center(
+              child: ConstrainedBox(
+                constraints: const BoxConstraints(maxWidth: 680),
                 child: SingleChildScrollView(
-                  padding: const EdgeInsets.symmetric(
-                      horizontal: 40, vertical: 40),
+                  padding: const EdgeInsets.all(48),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text('নতুন অ্যাকাউন্ট তৈরি করুন',
-                          style: GoogleFonts.inter(
-                            color: Colors.white,
-                            fontSize: 26,
-                            fontWeight: FontWeight.w700,
-                          )),
+                      Text(
+                        'Create Academic Profile',
+                        style: AppTypography.heading(
+                          fontSize: 32,
+                          fontWeight: FontWeight.w600,
+                          color: isDark ? Colors.white : const Color(0xFF0F172A),
+                        ),
+                      ),
                       const SizedBox(height: 6),
-                      Text('সব তারকা (*) চিহ্নিত ঘর পূরণ করা বাধ্যতামূলক',
-                          style: GoogleFonts.inter(
-                              color: const Color(0xFF475569), fontSize: 13)),
+                      Text(
+                        'Fields marked with an asterisk (*) are required',
+                        style: AppTypography.body(
+                          fontSize: 13,
+                          color: const Color(0xFF64748B),
+                        ),
+                      ),
                       const SizedBox(height: 28),
 
                       if (_error != null) ...[
@@ -568,8 +588,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             color: const Color(0xFFEF4444).withValues(alpha: 0.1),
                             borderRadius: BorderRadius.circular(8),
                             border: Border.all(
-                                color: const Color(0xFFEF4444)
-                                    .withValues(alpha: 0.3)),
+                                color: const Color(0xFFEF4444).withValues(alpha: 0.3)),
                           ),
                           child: Row(
                             children: [
@@ -577,10 +596,13 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                   color: Color(0xFFF87171), size: 16),
                               const SizedBox(width: 8),
                               Expanded(
-                                child: Text(_error!,
-                                    style: GoogleFonts.inter(
-                                        color: const Color(0xFFF87171),
-                                        fontSize: 13)),
+                                child: Text(
+                                  _error!,
+                                  style: AppTypography.body(
+                                    fontSize: 13,
+                                    color: const Color(0xFFF87171),
+                                  ),
+                                ),
                               ),
                             ],
                           ),
@@ -588,69 +610,103 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         const SizedBox(height: 16),
                       ],
 
-                      // Two-column layout
+                      // Form Grid (Two Columns)
                       Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          // Column 1
+                          // Column 1: Personal Credentials
                           Expanded(
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                _sectionHeader('ব্যক্তিগত তথ্য'),
-                                _formField('পূর্ণ নাম *', _fullNameCtrl,
-                                    'আপনার পূর্ণ নাম', Icons.person_outline),
-                                const SizedBox(height: 14),
-                                _formField('ইমেইল ঠিকানা *', _emailCtrl,
-                                    'example@aust.edu', Icons.email_outlined),
-                                const SizedBox(height: 14),
-                                _formField('ফোন নম্বর', _phoneCtrl,
-                                    '01XXXXXXXXX', Icons.phone_outlined),
+                                _sectionHeader('Personal Credentials', isDark),
+                                _formField(
+                                  label: 'Full Name *',
+                                  controller: _fullNameCtrl,
+                                  hint: 'Dr. John Doe',
+                                  icon: Icons.person_outline,
+                                  isDark: isDark,
+                                ),
                                 const SizedBox(height: 14),
                                 _formField(
-                                    'পাসওয়ার্ড * (কমপক্ষে ৬ অক্ষর)',
-                                    _passCtrl,
-                                    '••••••••',
-                                    Icons.lock_outline,
-                                    obscure: !_showPass,
-                                    suffix: IconButton(
-                                      icon: Icon(
-                                          _showPass
-                                              ? Icons.visibility_off_outlined
-                                              : Icons.visibility_outlined,
-                                          color: const Color(0xFF475569),
-                                          size: 18),
-                                      onPressed: () => setState(
-                                          () => _showPass = !_showPass),
-                                    )),
+                                  label: 'University Email *',
+                                  controller: _emailCtrl,
+                                  hint: 'instructor@aust.edu',
+                                  icon: Icons.email_outlined,
+                                  isDark: isDark,
+                                ),
                                 const SizedBox(height: 14),
-                                _formField('পাসওয়ার্ড নিশ্চিত করুন *',
-                                    _confirmPassCtrl, '••••••••',
-                                    Icons.lock_outline,
-                                    obscure: !_showPass),
+                                _formField(
+                                  label: 'Contact Phone',
+                                  controller: _phoneCtrl,
+                                  hint: '+880 1XXXXXXXXX',
+                                  icon: Icons.phone_outlined,
+                                  isDark: isDark,
+                                ),
+                                const SizedBox(height: 14),
+                                _formField(
+                                  label: 'Password * (min. 6 characters)',
+                                  controller: _passCtrl,
+                                  hint: '••••••••',
+                                  icon: Icons.lock_outline,
+                                  obscure: !_showPass,
+                                  isDark: isDark,
+                                  suffix: IconButton(
+                                    icon: Icon(
+                                      _showPass
+                                          ? Icons.visibility_off_outlined
+                                          : Icons.visibility_outlined,
+                                      color: const Color(0xFF64748B),
+                                      size: 18,
+                                    ),
+                                    onPressed: () =>
+                                        setState(() => _showPass = !_showPass),
+                                  ),
+                                ),
+                                const SizedBox(height: 14),
+                                _formField(
+                                  label: 'Confirm Password *',
+                                  controller: _confirmPassCtrl,
+                                  hint: '••••••••',
+                                  icon: Icons.lock_outline,
+                                  obscure: !_showPass,
+                                  isDark: isDark,
+                                ),
                               ],
                             ),
                           ),
                           const SizedBox(width: 24),
-                          // Column 2
+
+                          // Column 2: Institutional Affiliation
                           Expanded(
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                _sectionHeader('বিশ্ববিদ্যালয়ের তথ্য'),
-                                _formField('বিশ্ববিদ্যালয়ের নাম *',
-                                    _varsityCtrl,
-                                    'Ahsanullah University of Science...',
-                                    Icons.school_outlined),
+                                _sectionHeader('Institutional Affiliation', isDark),
+                                _formField(
+                                  label: 'University Name *',
+                                  controller: _varsityCtrl,
+                                  hint: 'Ahsanullah University of Science...',
+                                  icon: Icons.school_outlined,
+                                  isDark: isDark,
+                                ),
                                 const SizedBox(height: 14),
-                                _formField('বিশ্ববিদ্যালয় আইডি *',
-                                    _varsityIdCtrl, 'যেমন: 19.02.02.054',
-                                    Icons.badge_outlined),
+                                _formField(
+                                  label: 'Faculty / University ID *',
+                                  controller: _varsityIdCtrl,
+                                  hint: 'e.g. 19.02.02.054',
+                                  icon: Icons.badge_outlined,
+                                  isDark: isDark,
+                                ),
                                 const SizedBox(height: 14),
-                                _formField('ঠিকানা', _addressCtrl,
-                                    'আপনার বর্তমান ঠিকানা',
-                                    Icons.location_on_outlined,
-                                    maxLines: 4),
+                                _formField(
+                                  label: 'Department Office Address',
+                                  controller: _addressCtrl,
+                                  hint: 'Room 504, Dept of CSE, AUST',
+                                  icon: Icons.location_on_outlined,
+                                  maxLines: 4,
+                                  isDark: isDark,
+                                ),
                               ],
                             ),
                           ),
@@ -658,18 +714,19 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       ),
                       const SizedBox(height: 28),
 
-                      // Register button
+                      // Submit Button & Switch Link
                       Row(
                         children: [
                           Expanded(
                             child: SizedBox(
-                              height: 50,
+                              height: 48,
                               child: ElevatedButton(
                                 style: ElevatedButton.styleFrom(
                                   backgroundColor: const Color(0xFF0284C7),
                                   foregroundColor: Colors.white,
+                                  elevation: 0,
                                   shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(10)),
+                                      borderRadius: BorderRadius.circular(8)),
                                 ),
                                 onPressed: _loading ? null : _register,
                                 child: _loading
@@ -680,20 +737,28 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                             color: Colors.white,
                                             strokeWidth: 2),
                                       )
-                                    : Text('অ্যাকাউন্ট তৈরি করুন',
-                                        style: GoogleFonts.inter(
-                                            fontSize: 15,
-                                            fontWeight: FontWeight.w600)),
+                                    : Text(
+                                        'Create Account',
+                                        style: AppTypography.body(
+                                          fontSize: 14,
+                                          fontWeight: FontWeight.w600,
+                                          color: Colors.white,
+                                        ),
+                                      ),
                               ),
                             ),
                           ),
                           const SizedBox(width: 16),
                           TextButton(
                             onPressed: widget.onGoToLogin,
-                            child: Text('আগে থেকে অ্যাকাউন্ট আছে? লগইন করুন',
-                                style: GoogleFonts.inter(
-                                    color: const Color(0xFF38BDF8),
-                                    fontSize: 13)),
+                            child: Text(
+                              'Already have an account? Sign In',
+                              style: AppTypography.body(
+                                fontSize: 13,
+                                color: const Color(0xFF38BDF8),
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
                           ),
                         ],
                       ),
@@ -708,67 +773,75 @@ class _RegisterScreenState extends State<RegisterScreen> {
     );
   }
 
-  Widget _sectionHeader(String title) {
+  Widget _sectionHeader(String title, bool isDark) {
     return Padding(
-      padding: const EdgeInsets.only(bottom: 14),
-      child: Text(title,
-          style: GoogleFonts.inter(
-              color: const Color(0xFF38BDF8),
-              fontSize: 12,
-              fontWeight: FontWeight.w700,
-              letterSpacing: 0.5)),
+      padding: const EdgeInsets.only(bottom: 12),
+      child: Text(
+        title.toUpperCase(),
+        style: AppTypography.body(
+          fontSize: 11,
+          fontWeight: FontWeight.w700,
+          color: isDark ? const Color(0xFF38BDF8) : const Color(0xFF0284C7),
+          letterSpacing: 0.8,
+        ),
+      ),
     );
   }
 
-  Widget _formField(
-    String label,
-    TextEditingController controller,
-    String hint,
-    IconData icon, {
+  Widget _formField({
+    required String label,
+    required TextEditingController controller,
+    required String hint,
+    required IconData icon,
     bool obscure = false,
     Widget? suffix,
     int maxLines = 1,
+    required bool isDark,
   }) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(label,
-            style: GoogleFonts.inter(
-                color: const Color(0xFF94A3B8),
-                fontSize: 12,
-                fontWeight: FontWeight.w500)),
-        const SizedBox(height: 6),
-        TextField(
-          controller: controller,
-          obscureText: obscure,
-          maxLines: maxLines,
-          style: GoogleFonts.inter(color: Colors.white, fontSize: 13),
-          decoration: InputDecoration(
-            hintText: hint,
-            hintStyle: GoogleFonts.inter(
-                color: const Color(0xFF334155), fontSize: 13),
-            prefixIcon: maxLines == 1
-                ? Icon(icon, color: const Color(0xFF475569), size: 17)
-                : null,
-            suffixIcon: suffix,
-            filled: true,
-            fillColor: const Color(0xFF0F172A),
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(8),
-              borderSide:
-                  BorderSide(color: Colors.white.withValues(alpha: 0.08)),
+        Text(
+          label,
+          style: AppTypography.body(
+            fontSize: 12,
+            fontWeight: FontWeight.w600,
+            color: isDark ? const Color(0xFF94A3B8) : const Color(0xFF475569),
+          ),
+        ),
+        const SizedBox(height: 5),
+        Container(
+          decoration: BoxDecoration(
+            color: isDark ? const Color(0xFF0F172A) : Colors.white,
+            borderRadius: BorderRadius.circular(8),
+            border: Border.all(
+              color: isDark
+                  ? Colors.white.withValues(alpha: 0.08)
+                  : const Color(0xFFCBD5E1),
             ),
-            enabledBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(8),
-              borderSide:
-                  BorderSide(color: Colors.white.withValues(alpha: 0.08)),
+          ),
+          child: TextField(
+            controller: controller,
+            obscureText: obscure,
+            maxLines: maxLines,
+            style: AppTypography.body(
+              fontSize: 13,
+              color: isDark ? Colors.white : const Color(0xFF0F172A),
             ),
-            focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(8),
-              borderSide: const BorderSide(color: Color(0xFF0284C7)),
+            decoration: InputDecoration(
+              prefixIcon: Icon(icon,
+                  color: isDark ? const Color(0xFF64748B) : const Color(0xFF94A3B8),
+                  size: 18),
+              suffixIcon: suffix,
+              hintText: hint,
+              hintStyle: AppTypography.body(
+                fontSize: 13,
+                color: const Color(0xFF64748B),
+              ),
+              border: InputBorder.none,
+              contentPadding:
+                  const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
             ),
-            contentPadding:
-                const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
           ),
         ),
       ],

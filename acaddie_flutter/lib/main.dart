@@ -12,9 +12,15 @@ import 'screens/auth_screens.dart';
 import 'screens/course_catalog_screen.dart';
 import 'screens/simulation_history_screen.dart';
 
+import 'services/theme_service.dart';
+import 'services/firebase_backend_service.dart';
+import 'widgets/acaddie_logo.dart';
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  final user = await AuthService.getLoggedInUser();
+  await ThemeService.init();
+  await FirebaseBackendService.init();
+  final user = await FirebaseBackendService.getCurrentUser();
   runApp(AcaddieApp(initialUser: user));
 }
 
@@ -27,21 +33,18 @@ class AcaddieApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'ACADDIE — Think. Simulate. Decide.',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        brightness: Brightness.dark,
-        scaffoldBackgroundColor: const Color(0xFF060D1A),
-        colorScheme: const ColorScheme.dark(
-          primary: Color(0xFF0284C7),
-          secondary: Color(0xFF38BDF8),
-          surface: Color(0xFF0F172A),
-        ),
-        textTheme: GoogleFonts.interTextTheme(ThemeData.dark().textTheme),
-        useMaterial3: true,
-      ),
-      home: _AuthGate(initialUser: initialUser),
+    return ValueListenableBuilder<ThemeMode>(
+      valueListenable: ThemeService.themeModeNotifier,
+      builder: (context, currentMode, _) {
+        return MaterialApp(
+          title: 'ACADDIE — Think. Simulate. Decide.',
+          debugShowCheckedModeBanner: false,
+          themeMode: currentMode,
+          theme: ThemeService.lightTheme,
+          darkTheme: ThemeService.darkTheme,
+          home: _AuthGate(initialUser: initialUser),
+        );
+      },
     );
   }
 }
@@ -406,43 +409,10 @@ class _Sidebar extends StatelessWidget {
         children: [
           // Logo area
           Container(
-            padding: const EdgeInsets.fromLTRB(20, 24, 20, 20),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
-                  children: [
-                    Container(
-                      width: 32,
-                      height: 32,
-                      decoration: BoxDecoration(
-                        gradient: const LinearGradient(
-                          colors: [Color(0xFF0284C7), Color(0xFF6366F1)],
-                        ),
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                      child: const Icon(Icons.school,
-                          color: Colors.white, size: 18),
-                    ),
-                    const SizedBox(width: 10),
-                    Text('ACADDIE',
-                        style: GoogleFonts.inter(
-                          color: Colors.white,
-                          fontWeight: FontWeight.w800,
-                          fontSize: 18,
-                          letterSpacing: 1.2,
-                        )),
-                  ],
-                ),
-                const SizedBox(height: 4),
-                Text('Think. Simulate. Decide.',
-                    style: GoogleFonts.inter(
-                      color: const Color(0xFF38BDF8),
-                      fontSize: 9,
-                      fontWeight: FontWeight.w600,
-                      letterSpacing: 0.5,
-                    )),
-              ],
+            padding: const EdgeInsets.fromLTRB(16, 20, 16, 16),
+            child: AcaddieLogo(
+              size: 34,
+              isDark: ThemeService.isDark,
             ),
           ),
           Divider(color: Colors.white.withOpacity(0.06), height: 1),
@@ -579,7 +549,7 @@ class _Sidebar extends StatelessWidget {
                                 borderRadius: BorderRadius.circular(6)),
                           ),
                           icon: const Icon(Icons.logout, size: 14),
-                          label: Text('লগআউট',
+                          label: Text('Sign Out',
                               style: GoogleFonts.inter(
                                   fontSize: 12,
                                   fontWeight: FontWeight.w500)),
@@ -708,23 +678,73 @@ class _TopBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = ThemeService.isDark;
+
     return Container(
       height: 58,
       padding: const EdgeInsets.symmetric(horizontal: 24),
       decoration: BoxDecoration(
-        color: const Color(0xFF080F1E),
-        border:
-            Border(bottom: BorderSide(color: Colors.white.withOpacity(0.06))),
+        color: isDark ? const Color(0xFF080F1E) : Colors.white,
+        border: Border(
+          bottom: BorderSide(
+            color: isDark
+                ? Colors.white.withValues(alpha: 0.06)
+                : const Color(0xFFE2E8F0),
+          ),
+        ),
       ),
       child: Row(
         children: [
-          Text(_title,
-              style: GoogleFonts.inter(
-                color: Colors.white,
-                fontWeight: FontWeight.w700,
-                fontSize: 15,
-              )),
+          Text(
+            _title,
+            style: GoogleFonts.cormorantGaramond(
+              color: isDark ? Colors.white : const Color(0xFF0F172A),
+              fontWeight: FontWeight.w700,
+              fontSize: 20,
+            ),
+          ),
           const Spacer(),
+
+          // Theme Switcher Button (Dark / Light Mode)
+          InkWell(
+            onTap: () => ThemeService.toggleTheme(),
+            borderRadius: BorderRadius.circular(8),
+            child: Container(
+              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+              decoration: BoxDecoration(
+                color: isDark
+                    ? Colors.white.withValues(alpha: 0.08)
+                    : const Color(0xFFF1F5F9),
+                borderRadius: BorderRadius.circular(8),
+                border: Border.all(
+                  color: isDark
+                      ? Colors.white.withValues(alpha: 0.12)
+                      : const Color(0xFFCBD5E1),
+                ),
+              ),
+              child: Row(
+                children: [
+                  Icon(
+                    isDark ? Icons.light_mode : Icons.dark_mode,
+                    size: 15,
+                    color: isDark
+                        ? const Color(0xFFFBBF24)
+                        : const Color(0xFF0284C7),
+                  ),
+                  const SizedBox(width: 6),
+                  Text(
+                    isDark ? 'Light' : 'Dark',
+                    style: GoogleFonts.inter(
+                      fontSize: 11,
+                      fontWeight: FontWeight.w600,
+                      color: isDark ? Colors.white : const Color(0xFF0F172A),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          const SizedBox(width: 12),
 
           // Active simulation badge
           if (simulation != null) ...[
@@ -955,10 +975,10 @@ class _DashboardView extends StatelessWidget {
                       ),
                       const SizedBox(height: 16),
                       Text('Think. Simulate. Decide.',
-                          style: GoogleFonts.inter(
+                          style: GoogleFonts.cormorantGaramond(
                             color: Colors.white,
-                            fontSize: 32,
-                            fontWeight: FontWeight.w800,
+                            fontSize: 42,
+                            fontWeight: FontWeight.w600,
                             height: 1.1,
                           )),
                       const SizedBox(height: 8),

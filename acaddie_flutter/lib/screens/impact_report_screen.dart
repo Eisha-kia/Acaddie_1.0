@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import '../models/curriculum_models.dart';
 
 class ImpactReportScreen extends StatefulWidget {
@@ -82,7 +83,14 @@ class _ImpactReportScreenState extends State<ImpactReportScreen> {
                         ],
                       ),
                       const SizedBox(height: 6),
-                      const Text("Academic Change Impact Report", style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.white)),
+                      Text(
+                        "Academic Change Impact Report",
+                        style: GoogleFonts.cormorantGaramond(
+                          fontSize: 32,
+                          fontWeight: FontWeight.w600,
+                          color: Colors.white,
+                        ),
+                      ),
                       Text("Simulation ID: ${sim.simulationId} • ${sim.course.name}", style: const TextStyle(fontSize: 12, color: Color(0xFF94A3B8))),
                     ],
                   ),
