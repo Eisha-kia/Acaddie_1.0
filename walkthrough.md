@@ -38,71 +38,48 @@ $$\text{Academic Data} \longrightarrow \text{Proposed Change} \longrightarrow \t
 
 ---
 
-## 2. Project Structure
+## 2. Project Structure (100% Pure Dart & Flutter)
 
 ```
 e:\Acaddie_1.0\
-├── package.json                 # Monorepo scripts (server, client, build)
-├── .env.example                 # Environment variables (PORT=5001, GEMINI_API_KEY)
-├── server/
-│   ├── package.json
-│   ├── index.js                 # Express server on port 5001
-│   ├── data/
-│   │   ├── curriculum.js        # 7-course CSE dataset (topics, CLOs, prerequisites, assessments)
-│   │   └── history.json         # Persistent simulation history
-│   └── services/
-│       ├── graphEngine.js       # Directed graph BFS/DFS traversal & path solver
-│       ├── simulationEngine.js  # 7-dimension deterministic impact simulator
-│       ├── scoringEngine.js     # Explainable weighted regression (0-100)
-│       ├── evidenceEngine.js    # "Why?" causal chain builder with structural proofs
-│       ├── alternativesEngine.js# Automated Plan A, Plan B, Plan C generator
-│       ├── geminiService.js     # Optional Gemini 2.5 Flash API with local fallback
-│       └── historyStore.js      # Persistent history store
-└── client/
-    ├── package.json
-    ├── vite.config.js           # Vite config with API proxy to port 5001
-    ├── index.html
-    └── src/
-        ├── index.css            # Custom SaaS styling system (Navy, Slate, Gold, Emerald, Crimson)
-        ├── main.jsx             # React DOM entrypoint
-        ├── App.jsx              # Master application controller & state management
-        ├── utils/
-        │   └── api.js           # API communication utility
-        └── components/
-            ├── Navbar.jsx               # Header, engine badge, 1-click Judge Demo dropdown
-            ├── Sidebar.jsx              # Navigation (Dashboard, Map, Studio, Courses, History, Report)
-            ├── LandingHero.jsx          # "Think. Simulate. Decide." hero view
-            ├── DashboardView.jsx        # Academic Decision Center stats & quick scenarios
-            ├── AcademicMap.jsx          # Interactive SVG dependency graph & ripple pulses
-            ├── SimulationStudio.jsx     # 9-action change configuration wizard
-            ├── ProcessingAnimation.jsx  # Multi-stage AI checkmark progression
-            ├── ImpactReportView.jsx     # 7-dimension breakdown, score gauge, faculty control
-            ├── WhatIfComparison.jsx     # Side-by-side Plan A vs B vs C comparison matrix
-            ├── CourseCatalog.jsx        # Course syllabi, topics, and CLO inspector
-            ├── SimulationHistory.jsx    # Historical simulation audit trail
-            ├── PrintableReport.jsx      # University committee sign-off document
-            └── EvidenceModal.jsx        # Structural "Why?" causal path modal
+├── package.json                 # Convenience scripts (flutter:run, flutter:analyze, etc.)
+├── README.md                    # Project documentation & Quickstart
+├── legacy_web_backup/           # Archived previous React/Node.js files
+│   ├── client/                  # (Archived .jsx files)
+│   └── server/                  # (Archived Node.js files)
+└── acaddie_flutter/             # Active 100% Pure Flutter Application
+    ├── pubspec.yaml             # Dependencies: google_fonts, shared_preferences
+    └── lib/
+        ├── main.dart            # App entry point, Shell, Auth Gate & Top Navigation
+        ├── models/
+        │   ├── curriculum_models.dart # Curriculum graph, CLO, courses & simulation models
+        │   └── user_model.dart        # User authentication & profile data class
+        ├── services/
+        │   ├── academic_engine.dart   # Deterministic OBE graph simulation engine
+        │   └── auth_service.dart      # Local persistent authentication service
+        └── screens/
+            ├── auth_screens.dart              # Login & Registration screens
+            ├── course_catalog_screen.dart     # Course catalog with semester & search filters
+            ├── simulation_history_screen.dart # Session simulation history & audit trail
+            ├── simulation_studio_screen.dart  # Parameter configuration & simulation trigger
+            ├── impact_report_screen.dart      # 7-dimension scorecards & evidence inspector
+            ├── academic_map_screen.dart       # Interactive SVG/canvas course dependency graph
+            └── what_if_screen.dart            # Multi-plan comparative analysis matrix
 ```
-
 ---
 
-## 3. How to Run Locally
+## 3. How to Run Locally (Flutter)
 
 ### Prerequisites
-- Node.js LTS (v24+ or v18+) installed.
+- Flutter SDK (3.x+) installed.
 
-### Start Backend and Frontend
-1. Open a terminal in `e:\Acaddie_1.0`:
-   ```bash
-   # Start backend API server (runs on http://localhost:5001)
-   npm run server
-   ```
-2. In a second terminal in `e:\Acaddie_1.0`:
-   ```bash
-   # Start frontend client (runs on http://127.0.0.1:5173)
-   npm run client
-   ```
-3. Open your browser and navigate to: **`http://127.0.0.1:5173`**
+### Run Flutter Web
+```bash
+cd acaddie_flutter
+flutter pub get
+flutter run -d web-server --web-port 8080 --web-hostname 0.0.0.0
+```
+Application will be live at: **`http://localhost:8080`**
 
 ---
 

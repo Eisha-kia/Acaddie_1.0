@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../models/curriculum_models.dart';
 import '../services/academic_engine.dart';
 
 class SimulationStudioScreen extends StatefulWidget {

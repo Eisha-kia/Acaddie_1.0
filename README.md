@@ -41,41 +41,60 @@ When a faculty member proposes modifying a course or syllabus (e.g. removing a t
 
 ---
 
-## 🛠️ Quick Start Guide
+## 📱 Technology Stack
+- **Framework**: **Flutter 3.x (Dart)** (Web & Cross-Platform)
+- **State Management & Persistence**: SharedPreferences (local session & auth storage)
+- **Typography & Styling**: Google Fonts (Inter), Custom Dark Slate Academic Design System
+
+---
+
+## 🛠️ Quick Start Guide (Flutter)
 
 ### 1. Prerequisites
-- Node.js LTS (v24+ or v18+) installed.
+- **Flutter SDK (3.x+)** installed.
 
-### 2. Installation
+### 2. Run the Flutter Web App
 ```bash
-# Install server and client dependencies
-npm run install:all
+cd acaddie_flutter
+flutter pub get
+flutter run -d web-server --web-port 8080 --web-hostname 0.0.0.0
 ```
-
-### 3. Run the Application
-In terminal 1:
-```bash
-npm run server
-```
-*Backend runs on `http://localhost:5001`*
-
-In terminal 2:
-```bash
-npm run client
-```
-*Frontend opens at `http://127.0.0.1:5173`*
+*The app is live and available at:* **`http://localhost:8080`**
 
 ---
 
 ## 🎯 2-Minute Hackathon Judge Demo
-1. Open `http://127.0.0.1:5173`.
-2. Click **⚡ 1-Click Judge Demo** (Scenario 1: Remove Graph Algorithms).
-3. Observe the multi-stage AI reasoning animation.
-4. Review the **Overall Impact (78/100, HIGH RISK)**, CLO-3 reduction, and 4-course cascade.
-5. Click **Inspect "Why?" Evidence** to view structural graph causal paths.
-6. Click **Compare Plans** to see why Plan C (Move to Algorithms) is the safest alternative (26/100).
-7. Click **View Ripple on Map** to see Data Structures, Algorithms, AI, and ML pulsing in real-time.
-8. Click **Export Official Report** to inspect the printable accreditation document.
+1. Open **`http://localhost:8080`** in your browser.
+2. If first time: Create an account via **Register** (Name, Email, Phone, Password, Varsity name, ID, Address).
+3. On the Dashboard, click **⚡ 1-Click Judge Demo (Remove Graph Algorithms)**.
+4. Review the **Overall Impact (78/100, HIGH RISK)**, CLO-3 reduction, and downstream course cascade.
+5. Click **Inspect "Why?" Evidence** to view structural graph causal paths and ABET/IEEE CS2023 alignment.
+6. Check **Academic Map** to see animated nodes pulsing in real-time.
+7. Click **What-If Matrix** to compare Plan A, Plan B, and Plan C.
+8. Click **Course Catalog** to inspect all courses, syllabi topics, and CLOs.
+9. Click **Export Official Report** to inspect the printable accreditation document.
+
+---
+
+## 📁 Architecture (100% Pure Dart & Flutter)
+```
+acaddie_flutter/lib/
+├── main.dart                          # App entry point, Shell & Top Navigation
+├── models/
+│   ├── curriculum_models.dart         # Curriculum graph, CLO, courses & simulation models
+│   └── user_model.dart                # User authentication & profile data class
+├── services/
+│   ├── academic_engine.dart           # Deterministic OBE graph simulation engine
+│   └── auth_service.dart              # Local persistent authentication service
+└── screens/
+    ├── auth_screens.dart              # Login & Registration screens
+    ├── course_catalog_screen.dart     # Course catalog with semester & search filters
+    ├── simulation_history_screen.dart # Session simulation history & audit trail
+    ├── simulation_studio_screen.dart  # Parameter configuration & simulation trigger
+    ├── impact_report_screen.dart      # 7-dimension scorecards & evidence inspector
+    ├── academic_map_screen.dart       # Interactive SVG/canvas course dependency graph
+    └── what_if_screen.dart            # Multi-plan comparative analysis matrix
+```
 
 ---
 
